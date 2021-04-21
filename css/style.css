@@ -1,4 +1,7 @@
 @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css);
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Quicksand:wght@500&display=swap');
 
 html {
   cursor: url('../images/icons/cursor.png'), auto;
@@ -11,11 +14,14 @@ body {
   color: #ddd;
   margin: 0;
   padding: 0;
+  font-family: 'Quicksand';
+  font-weight: 500;
 }
 
 a {
   color: #7227fd;
 }
+
 a:hover {
   cursor: url('../images/icons/cursor-active.png'), auto;
 }
@@ -64,6 +70,7 @@ span {
 }
 
 p {
+  font-family: 'Open Sans';
   font-size: 1.2rem;
   font-weight: 300;
   color: #ddd;
@@ -307,7 +314,7 @@ nav .button-collapse:hover {
     }
 
     nav ul a.active {
-        border-bottom: 1px solid #ddd;
+        border-bottom: 0px solid #ddd;
         opacity: 1;
     }
 
@@ -375,14 +382,11 @@ nav .button-collapse:hover {
 }
 
 h1 {
-  font-weight: 100;
-  font-size: 2.28rem;
-  text-align: center;
+  font-size: 3rem;
 }
 
 h3 {
-  font-weight: 100;
-  text-align: center;
+
 }
 
 h4 {
