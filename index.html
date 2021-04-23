@@ -41,7 +41,7 @@
           <div class="row">
             <div class="col s12">
               <a href="#" data-activates="mobile-demo" class="button-collapse"></a>
-              <a href="#home" class="brand-logo" ><h4><strong>CHALK</strong>CAST</h4></a>
+              <a href="#home" class="brand-logo"></a>
                 <ul id="nav" class="right hide-on-med-and-down">
                   <li><a id="nav-bio" href="#bio">FAQs</a></li>
                   <li><a id="nav-cv" href="#cv">About Us</a></li>
@@ -60,16 +60,16 @@
     </nav>
   </div>
 
-<a href="#design"<div class="down"></div></a>
+<a href="#design"><div class="down"></div></a>
 
 <div class="home-wrap">
-  <canvas id="home" class="hide-on-med-and-down" ></canvas>
+  <canvas id="home" class="hide-on-med-and-down"></canvas>
     <div class="main-section">
       <div class="container">
         <div class="row">
           <div class="col s12 m2 l2"></div>
           <div class="col s12 m8 l8">
-          <img src="images/Illustration.svg" style="width: 100%;">
+            <img src="images/Illustration.svg" style="width: 100%; opacity: 0.8;">
           </div>
           <div class="col s12 m2 l2"></div>
         </div>
@@ -195,80 +195,6 @@
            edge: 'right'
          }
        );
-
-       //Update nav
-       var links = document.getElementById('nav').childNodes;
-
-       var waypoint1 = new Waypoint({
-          element: document.getElementById('design'),
-          handler: function() {
-            document.getElementById('nav-design').className = "active";
-            document.getElementById('nav-art').className = "";
-            document.getElementById('nav-bio').className = "";
-            document.getElementById('nav-cv').className = "";
-            document.getElementById('nav-contact').className = "";
-          }
-       });
-       var waypoint2 = new Waypoint({
-          element: document.getElementById('art'),
-          handler: function() {
-            document.getElementById('nav-design').className = "";
-            document.getElementById('nav-art').className = "active";
-            document.getElementById('nav-bio').className = "";
-            document.getElementById('nav-cv').className = "";
-            document.getElementById('nav-contact').className = "";
-          }
-       });
-       var waypoint3 = new Waypoint({
-          element: document.getElementById('bio'),
-          handler: function() {
-            document.getElementById('nav-design').className = "";
-            document.getElementById('nav-art').className = "";
-            document.getElementById('nav-bio').className = "active";
-            document.getElementById('nav-cv').className = "";
-            document.getElementById('nav-contact').className = "";
-          }
-       });
-       var waypoint4 = new Waypoint({
-          element: document.getElementById('cv'),
-          handler: function() {
-            document.getElementById('nav-design').className = "";
-            document.getElementById('nav-art').className = "";
-            document.getElementById('nav-bio').className = "";
-            document.getElementById('nav-cv').className = "active";
-            document.getElementById('nav-contact').className = "";
-          }
-       });
-       var waypoint5 = new Waypoint({
-          element: document.getElementById('contact'),
-          handler: function() {
-            document.getElementById('nav-design').className = "";
-            document.getElementById('nav-art').className = "";
-            document.getElementById('nav-bio').className = "";
-            document.getElementById('nav-cv').className = "";
-            document.getElementById('nav-contact').className = "active";
-          }
-       });
-
-       function toggleBioTerms() {
-         var term1 = document.getElementById('bioterm-1').innerHTML;
-         var term2 = document.getElementById('bioterm-2').innerHTML;
-         if (term1 == "DESIGN") {
-           document.getElementById('bioterm-1').innerHTML = "ART"
-           document.getElementById('bioterm-2').innerHTML = "SCIENCE"
-         }
-         else {
-           document.getElementById('bioterm-1').innerHTML = "DESIGN"
-           document.getElementById('bioterm-2').innerHTML = "ENGINEERING"
-         }
-       }
-
-       function copyToClipboard() {
-          document.getElementById('my-email').select();
-          document.execCommand("Copy");
-          alert("Copied the text: bwilliford@gmail.com");
-        }
-
      </script>
 
      <script type="text/paperscript" canvas="home">
@@ -318,5 +244,5 @@
       }
 
     </script>
-
+  </body>
 </html>

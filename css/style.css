@@ -24,7 +24,7 @@ html {
 
 body {
   background: #000 url('../images/bg.jpg') no-repeat;
-  background-size: cover;
+  background-size: 100% 100vh;
   background-attachment: fixed;
   color: #ddd;
   margin: 0;
@@ -98,7 +98,6 @@ p {
 .img-container img {
  width: 100%;
 }
-
 
 .button-collapse img{
   width: 50px;
@@ -250,12 +249,8 @@ p {
 }
 
 .navbar-fixed {
-  position: inherit;
+  position: absolute;
   z-index: 999999999;
-}
-
-.navbar-fixed nav {
-  position: inherit;
 }
 
 nav {
@@ -290,10 +285,15 @@ nav .button-collapse:hover {
 }
 
  .nav-wrapper .brand-logo {
-    height: 100px;
-    line-height: 100px;
+    height: 80px;
+    width: 260px;
+    line-height: 80px;
     padding: 20px 0 0 23px;
+    margin-top: 20px;
     cursor: url('../images/icons/cursor.png'), auto;
+    background-image: url('../images/chalkcast-logo.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
 }
 
 .love {
