@@ -845,3 +845,22 @@ h3 {
   margin: 0 auto;
   display: block;
 }
+
+#chalkboard {
+  width: 100vw;
+  height: 100vh;
+  cursor: crosshair;
+  transition-duration: 1s;
+}
+
+.chalkboard {
+  background-color: #131D1F;
+}
+
+.whiteboard {
+  background-color: #ffffff;
+}
+
+.exit {
+  
+}
