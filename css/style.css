@@ -23,14 +23,14 @@ html {
 }
 
 body {
-  background: #000 url('../images/bg.jpg') no-repeat;
+  background: #ffffff;
   background-size: 100% 100vh;
   background-attachment: fixed;
   color: #ddd;
   margin: 0;
   padding: 0;
   font-family: 'Quicksand';
-  font-weight: 500;
+  font-weight: 300;
 }
 
 a {
@@ -107,18 +107,17 @@ p {
 
 .section {
   padding: 150px 20px 150px 20px;
-  min-height: 100vh;
-  background-color: #ccc;
-  color: #444;
+  color: #707070;
 }
 
 .section p{
-  color: #444;
+  color: #707070;
 }
 
 .main-section {
   padding: 100px 20px 150px 20px;
   height: 100vh;
+  background: #000 url('../images/bg.jpg') no-repeat fixed;
 }
 
 #contact {
@@ -289,7 +288,7 @@ nav .button-collapse:hover {
     width: 260px;
     line-height: 80px;
     padding: 20px 0 0 23px;
-    margin-top: 20px;
+    margin: 20px 0 0 20px;
     cursor: url('../images/icons/cursor.png'), auto;
     background-image: url('../images/chalkcast-logo.png');
     background-size: 100%;
@@ -314,9 +313,10 @@ nav .button-collapse:hover {
     width: 100px;
     height: 100px;
     position: absolute;
-    bottom: 0;
+    bottom: 20px;
     left: 50%;
     margin-left: -50px;
+    border-radius: 50px;
     background-image: url('../images/icons/down.svg');
     opacity: 0.6;
     transition-duration: 0.5s;
@@ -573,9 +573,7 @@ nav .button-collapse {
 }
 
 .footer {
-   background-color: rgba(0,0,0,0);
-   height: 60px;
-   line-height: 60px;
+   background: #000 url('../images/bg.jpg') no-repeat fixed;
    padding: 0 30px;
    bottom: 0;
 }
@@ -834,6 +832,10 @@ h2 {
 h3 {
   font-size: 1.4em;
   text-align: center;
+}
+
+.brand-header {
+  color: #1ac9b4;
 }
 
 .persona {
