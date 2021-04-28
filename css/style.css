@@ -1,7 +1,6 @@
 @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css);
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Quicksand:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap');
 
 html {
   cursor: url('../images/icons/cursor.png'), auto;
@@ -42,7 +41,7 @@ a:hover {
 }
 
 span {
-  color: #1ac9b4;
+  font-weight: 600;
   transition-duration: 1s;
 }
 
@@ -87,7 +86,7 @@ span {
 p {
   font-family: 'Open Sans';
   font-size: 1.2rem;
-  font-weight: 300;
+  font-weight: 400;
   color: #ddd;
 }
 
@@ -112,6 +111,14 @@ p {
 
 .section p{
   color: #707070;
+}
+
+.section img {
+  transition-duration: 0.5s;
+}
+
+.section img:hover {
+  transform: rotateY(15deg);
 }
 
 .main-section {
@@ -303,6 +310,16 @@ nav .button-collapse:hover {
 
   nav .button-collapse {
     margin-top: 34px;
+  }
+
+  .loginButton {
+    background-color: #1ac9b4;
+    border-radius: 0px;
+    height: 40px;
+    line-height: 40px;
+    padding: 30px 30px;
+    box-shadow: 0px 15px 30px rgba(26,201,80,0.2);
+    margin-left: 30px;
   }
 
 }
@@ -552,7 +569,8 @@ nav .button-collapse {
 }
 
 .side-nav {
-  background-color: rgba(0,0,0,0.8);
+  background-color: rgba(0,0,0,0.6);
+  backdrop-filter: blur(10px);
 }
 
 .side-nav li>a {
@@ -880,6 +898,60 @@ h3 {
   line-height: 50px;
   border-radius: 25px;
   padding: 0 20px;
-  background-color: rgba(0,0,0,0.6);
+  background-color: rgba(0,0,0,0.4);
   background-blend-mode: blur(50px);
+}
+
+#toolbar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  top: 100px;
+  left: 20px;
+}
+
+#toolbar li {
+  height: 50px;
+  width: 50px;
+  border-radius: 25px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  transition-duration: 0.5s;
+}
+
+#toolbar li.active {
+  width: 80px;
+}
+
+#mainColor {
+  background-color: #ffffff;
+}
+
+#blue {
+  background-color: #678fe0;
+}
+
+#green {
+  background-color: #86d0ca;
+}
+
+#red {
+  background-color: #df5959;
+}
+
+#purple {
+  background-color: #9e7ad9;
+}
+
+#orange {
+  background-color: #d69e54;
+}
+
+#eraser {
+  background-color: rgba(0,0,0,0.4);
+  background-image: url('../images/icons/eraser.svg');
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
 }

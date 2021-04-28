@@ -17,8 +17,19 @@
 
   <body>
     <canvas id="chalkboard" class="chalkboard" hidpi="off" resize></canvas>
-    <div id="toggleBackground" onclick="toggleBackground()">Chalkboard</div>
+    <div id="toggleBackground" onclick="toggleBackground()">Switch to Chalkboard</div>
     <div class="exit"></div>
+
+    <ul id="toolbar">
+      <li id="mainColor" class="active" onclick="changeColor('mainColor')"></li>
+      <li id="blue" onclick="changeColor('blue')"></li>
+      <li id="green" onclick="changeColor('green')"></li>
+      <li id="red" onclick="changeColor('red')"></li>
+      <li id="purple" onclick="changeColor('purple')"></li>
+      <li id="orange" onclick="changeColor('orange')"></li>
+      <li id="eraser" onclick="toggleEraser()"></li>
+    </ul>
+
   </body>
       <!--JS Frameworks-->
       <script type="text/javascript" src="js/paper-full.min.js"></script>
