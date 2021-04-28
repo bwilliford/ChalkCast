@@ -862,5 +862,24 @@ h3 {
 }
 
 .exit {
-  
+  background-image: url(../images/icons/exit.svg);
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+#toggleBackground {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  cursor: pointer;
+  height: 50px;
+  line-height: 50px;
+  border-radius: 25px;
+  padding: 0 20px;
+  background-color: rgba(0,0,0,0.6);
+  background-blend-mode: blur(50px);
 }
