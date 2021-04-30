@@ -1,0 +1,94 @@
+<html>
+  <head>
+    <title>ChalkCast</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="ChalkCast">
+    <meta name="keywords" content="ChalkCast">
+    <meta name="author" content="Blake Williford">
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link rel="stylesheet" href="css/style.css" >
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!--JS Frameworks-->
+    <script src="js/paper-full.min.js"></script>
+  </head>
+
+  <body class="darkbody">
+    <div style="padding: 0;">
+      
+      <div id="yourStream" style="background-image: url('./images/people/teacher.jpg')"></div>
+
+      <ul class="informationToggles">
+          <li id="audioToggle" onclick="toggleInformation('audioToggle')"></li>
+          <li id="videoToggle" onclick="toggleInformation('videoToggle')" class="active"></li>
+          <li id="streamToggle" onclick="toggleInformation('streamToggle')"></li>
+      </ul>
+
+      <ul class="toolbar">
+        <li id="nudge"></li>
+        <li id="chat" onclick="togglePanel('chat')"></li>
+        <li id="groups"></li>
+        <li id="chalk"></li>
+        <li id="quiz" onclick="togglePanel('quiz')"></li>
+        <li id="settings" onclick="togglePanel('settings')"></li>
+      </ul>
+
+      <div id="panel"></div>
+
+      <ul id="tileList" class="streamContainer">
+          <li id="tile1" style="background-image: url('./images/people/1.jpg')" class="tile" onclick="expand('tile1')"><div class="name">Kelly Hamilton</div></li>
+          <li id="tile2" style="background-image: url('./images/people/2.jpg')" class="tile" onclick="expand('tile2')"><div class="name">Billy Joel</div></li>
+          <li id="tile3" style="background-image: url('./images/people/3.jpg')" class="tile" onclick="expand('tile3')"><div class="name">Monica Simpson</div></li>
+          <li id="tile4" style="background-image: url('./images/people/4.jpg')" class="tile" onclick="expand('tile4')"><div class="name">Brittany Rojas</div></li>
+          <li id="tile5" style="background-image: url('./images/people/5.jpg')" class="tile" onclick="expand('tile5')"><div class="name">Mindy Simpson</div></li>
+          <li id="tile6" style="background-image: url('./images/people/6.jpg')" class="tile" onclick="expand('tile6')"><div class="name">Gwen Smith</div></li>
+          <li id="tile7" style="background-image: url('./images/people/7.jpg')" class="tile" onclick="expand('tile7')"><div class="name">Casey Bishop</div></li>
+          <li id="tile8" style="background-image: url('./images/people/8.jpg')" class="tile" onclick="expand('tile8')"><div class="name"> Katherine Blanco</div></li>
+          <li id="tile9" style="background-image: url('./images/people/9.jpg')" class="tile" onclick="expand('tile9')"><div class="name">Stephanie Love</div></li>
+          <li id="tile10" style="background-image: url('./images/people/10.jpg')" class="tile" onclick="expand('tile10')"><div class="name">Tristan Xavier</div></li>
+          <li id="tile11" style="background-image: url('./images/people/11.jpg')" class="tile" onclick="expand('tile11')"><div class="name">Vape Kid</div></li>
+          <li id="tile12" style="background-image: url('./images/people/12.jpg')" class="tile" onclick="expand('tile12')"><div class="name">Daniel Lee</div></li>
+      </ul>      
+    </div>
+
+    <!--Import jQuery before materialize.js-->
+     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    
+     <script>
+         function expand(tile) {
+             if (document.getElementById(tile).className === 'tile') {
+                document.getElementById(tile).className = 'tile expanded';
+             }
+             else if (document.getElementById(tile).className === 'tile expanded') {
+                document.getElementById(tile).className = 'tile';
+             }
+         }
+
+         function toggleInformation(tool) {
+             if (document.getElementById(tool).className === 'active') {
+                document.getElementById(tool).className = '';
+             }
+             else {
+                document.getElementById(tool).className = 'active';
+             }
+         }
+
+         function togglePanel(panel) {
+            if (document.getElementById('panel').className === 'active') {
+                document.getElementById('panel').className = '';
+                document.getElementById(panel).className = '';
+            }
+            else {
+                document.getElementById('panel').className = 'active';
+                document.getElementById(panel).className = 'active';
+            }
+         }{}
+
+     </script>
+    </body>
+</html>

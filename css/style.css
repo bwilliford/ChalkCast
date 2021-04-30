@@ -1,6 +1,6 @@
 @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css);
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500;&display=swap');
 
 html {
   cursor: url('../images/icons/cursor.png'), auto;
@@ -37,7 +37,7 @@ a {
 }
 
 a:hover {
-  cursor: url('../images/icons/cursor-active.png'), auto;
+  opacity: 0.5;
 }
 
 span {
@@ -954,4 +954,224 @@ h3 {
   background-image: url('../images/icons/eraser.svg');
   background-repeat: no-repeat;
   background-position: 50% 50%;
+}
+
+.tile {
+  order: 1;
+  background-size: cover;
+  background-position: 50% 50%;
+  width: 24.9%;
+  height: 300px;
+  margin: 0;
+  margin: 0 0.1% 0.1% 0;
+  display: inline-block;
+  cursor: nesw-resize;
+  position: relative;
+  transition-duration: 1s;
+}
+
+.tile:hover {
+  opacity: 0.6;
+}
+
+.tile.expanded {
+  order: 0;
+  width: 100%;
+  height: 90vh;
+  transition-duration: 1s;
+}
+
+.tile.expanded:hover {
+  opacity: 1;
+}
+
+.tile.fullscreen {
+  width: 100%;
+  height: 100vh;
+  transition-duration: 1s;
+}
+
+@media only screen and (max-width: 1440px) {
+  .tile {
+    width: 33.2%;
+    height: 250px;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .tile {
+    width: 49.9%;
+    height: 200px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .tile {
+    width: 100%;
+    height: 200px;
+  }
+}
+
+.name {
+  background-color: rgba(0,0,0,0.6);
+  backdrop-filter: blur(30px);
+  line-height: 40px;
+  height: 40px;
+  width: 200px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  color: #fff;
+  font-family: 'Open Sans';
+  font-size: 1.2em;
+  position: absolute;
+  padding: 0 20px;
+  bottom: 0px;
+  left: calc(50% - 100px);
+  text-align: center;
+}
+
+#tileList {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.streamContainer {
+  width: calc(100% - 120px);
+  position: absolute;
+  left: 120px;
+  overflow-y: scroll;
+  margin: 0px;
+  padding: 0px;
+}
+
+.darkbody {
+  width: 100%;
+  min-height: 100vh;
+  background: #000 url('../images/bg.jpg') no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+#yourStream {
+  position: fixed;
+  background-size: cover;
+  top: 10px;
+  left: 10px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  background-color: #86d0ca;
+}
+
+.informationToggles {
+  position: fixed;
+  top: 110px;
+  left: 30px;
+  width: 60px;
+}
+
+.informationToggles li {
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  margin-bottom: 10px;
+  background-color: rgba(0,0,0,0.5);
+  transition-duration: 0.5s;
+}
+
+.informationToggles li:hover {
+  background-color: #86d0ca;
+  box-shadow: 0 5px 20px #86d0ca;
+}
+
+.informationToggles li.active {
+  background-color: #86d0ca;
+  box-shadow: 0 5px 20px #86d0ca;
+}
+
+.toolbar {
+  position: fixed;
+  top: 330px;
+  left: 30px;
+  width: 60px;
+  height: 360px;
+  border-radius: 30px;
+}
+
+.toolbar li {
+  width: 60px;
+  height: 60px;   
+  transition-duration: 0.5s;
+  border-radius: 30px;
+}
+
+.toolbar li:hover {
+  background-color: rgba(0,0,0,0.6);
+  backdrop-filter: blur(30px); 
+ 
+}
+
+.toolbar li.active {
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  background-color: rgba(0,0,0,0.6);
+  backdrop-filter: blur(30px); 
+}
+
+#streamToggle {
+  background-image: url('../images/icons/screenshare.svg');
+}
+
+#videoToggle {
+  background-image: url('../images/icons/video.svg');
+}
+
+#audioToggle {
+  background-image: url('../images/icons/audio.svg');
+}
+
+#nudge {
+  background-image: url('../images/icons/nudge.svg');
+}
+
+#settings {
+  background-image: url('../images/icons/settings.svg');
+}
+
+#chat {
+  background-image: url('../images/icons/chat.svg');
+}
+
+#groups {
+  background-image: url('../images/icons/groups.svg');
+}
+
+#chalk {
+  background-image: url('../images/icons/sketch.svg');
+}
+
+#quiz {
+  background-image: url('../images/icons/quiz.svg');
+}
+
+/* Chat Panel */
+
+#panel {
+  position: fixed;
+  top: 2vh;
+  left: 90px;
+  width: 0px;
+  height: 96vh;
+  background-color: rgba(0,0,0,0.7);
+  backdrop-filter: blur(20px);
+  z-index: 2;
+  border-radius: 30px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  transition-duration: 1s;
+}
+
+#panel.active {
+  width: 400px;
 }
