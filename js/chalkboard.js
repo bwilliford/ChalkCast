@@ -1,63 +1,68 @@
 //Initialize DOM elements we'll manipulate
 let chalkboard = document.getElementById('chalkboard');
-let toggleBG = document.getElementById('toggleBackground');
+//let toggleBG = document.getElementById('toggleBackground');
 let toolbar = document.getElementById('toolbar');
 let mainColor = document.getElementById('mainColor');
-
-//Initialization of PaperJS and attaching to canvas
-paper.install(window);
-window.onload = function() {
-    // Create an empty project and a view for the canvas
-    paper.setup(chalkboard);
-    //Activate chalk by default
-    chalk.activate();
-}
 
 //Global variables / tools
 let sketch = [];
 let path;
+let chalk;
+let eraser;
 let strokeColor = 'white';
 let strokeSize = 2;
+let chalkActivated = 0;
 
-//Chalk tool
-let chalk = new Tool();
-chalk.onMouseDown = function(event) {
-    path = new paper.Path();
-    path.strokeColor = strokeColor;
-    path.strokeWidth = strokeSize;
-    path.add(event.point);
-}
-chalk.onMouseDrag = function(event) {
-    path.add(event.point);
-}
-chalk.onMouseUp = function(event) {
-    if (strokeColor === 'white' || strokeColor === 'black') {
-        sketch.push(path);
+//Initialization of PaperJS and attaching to canvas
+paper.install(window);
+//window.onload = function() {
+function initializePaper() { 
+// Create an empty project and a view for the canvas
+    paper.setup(chalkboard);
+    //Activate chalk by default
+    chalkActivated = 1;
+
+    //Chalk tool
+    chalk = new Tool();
+    chalk.onMouseDown = function(event) {
+        path = new paper.Path();
+        path.strokeColor = strokeColor;
+        path.strokeWidth = strokeSize;
+        path.add(event.point);
     }
-}
-
-//Eraser tool
-let eraser = new paper.Tool();
-eraser.onMouseDown = erase;
-eraser.onMouseDrag = erase;
-function erase(event) {
-    //dataChanged = true;
-    let hits = paper.project.hitTestAll(event.point, {
-        segments: true,
-        fill: true,
-        class: paper.Path,
-        tolerance: 5,
-        stroke: true
-    });
-
-    if (hits.length) {
-        for (var i = 0; i < hits.length; i++) {
-            let hit = hits[i];
-            hit.item.remove();            
+    chalk.onMouseDrag = function(event) {
+        path.add(event.point);
+    }
+    chalk.onMouseUp = function(event) {
+        if (strokeColor === 'white' || strokeColor === 'black') {
+            sketch.push(path);
         }
     }
-}
 
+    //Eraser tool
+    eraser = new paper.Tool();
+    eraser.onMouseDown = erase;
+    eraser.onMouseDrag = erase;
+    function erase(event) {
+        //dataChanged = true;
+        let hits = paper.project.hitTestAll(event.point, {
+            segments: true,
+            fill: true,
+            class: paper.Path,
+            tolerance: 5,
+            stroke: true
+        });
+
+        if (hits.length) {
+            for (var i = 0; i < hits.length; i++) {
+                let hit = hits[i];
+                hit.item.remove();            
+            }
+        }
+    }
+
+    chalk.activate();
+}
 
 
 //Main functions

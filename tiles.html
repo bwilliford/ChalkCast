@@ -10,11 +10,10 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-    <link rel="stylesheet" href="css/style.css" >
+    <link rel="stylesheet" href="./css/style.css" >
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <!--JS Frameworks-->
-    <script src="js/paper-full.min.js"></script>
+   
   </head>
 
   <body class="darkbody">
@@ -32,12 +31,81 @@
         <li id="nudge"></li>
         <li id="chat" onclick="togglePanel('chat')"></li>
         <li id="groups"></li>
-        <li id="chalk"></li>
+        <li id="chalk" onclick="toggleChalkboard()"></li>
         <li id="quiz" onclick="togglePanel('quiz')"></li>
         <li id="settings" onclick="togglePanel('settings')"></li>
+        <li id="exit"></li>
       </ul>
 
-      <div id="panel"></div>
+      <div id="panel">
+          <div id="panel-chat" style="display: none">
+            <h3 class="title">Chat</h3>
+            <div class="exit" onclick="togglePanel('chat')"></div>
+            <ul>
+                <li class="indicator-active">Kelly Hamilton</li>
+                <li class="indicator-active">Billy Joel</li>
+                <li class="indicator-active">Monica Simpson</li>
+                <li class="indicator-active">Maria Gonzales</li>
+                <li class="indicator-active">Brittany Rojas</li>
+                <li class="indicator-active">Mindy Simpson</li>
+                <li class="indicator-active">Casey Bishop</li>
+                <li class="indicator-active">Gwen Smith</li>
+                <li class="indicator-active">Katherine Blanco</li>
+                <li class="indicator-active">Stephanie Love</li>
+                <li class="indicator-active">Tristan Xavier</li>
+                <li class="indicator-absent">Vape Kid</li>
+                <li class="indicator-absent">Daniel Lee</li>
+            </ul>
+          </div>
+
+          <div id="panel-settings" style="display: none">
+            <div class="exit" onclick="togglePanel('settings')"></div>
+            <h3 class="title">Settings</h3>
+            <div class="panelSection">
+             
+              <h4>Room Name</h4>
+              <p>Designer Studio</p>
+            </div>
+            <div class="panelSection">
+              <h4>Participant Features</h4>
+              <p>Screen Share<div class="switch" style="float: right;">
+                <label>
+                  <input type="checkbox">
+                  <span class="lever"></span>
+                </label></div>
+              </p>
+              <p>Chat with Everyone</p>
+              <p>Direct Message Chat</p>
+            </div>
+            <div class="panelSection">
+              <h4>Preferences</p>
+              <p>Upon entry, mic is OFF</p>
+              <p>Upon entry, camera is OFF</p>
+              <p>Microphone</p>
+              <p>Audio Output</p>
+              <p>Video Source</p>
+            </div>
+
+            
+            
+            
+          </div>
+      </div>
+
+      <div id="chalkboardContainer">
+        <canvas id="chalkboard" class="chalkboard" hidpi="off" resize>     </canvas>
+        <div class="exit" onclick="toggleChalkboard()"></div>
+        <ul id="toolbar">
+          <li id="mainColor" class="active" onclick="changeColor('mainColor')"></li>
+          <li id="blue" onclick="changeColor('blue')"></li>
+          <li id="green" onclick="changeColor('green')"></li>
+          <li id="red" onclick="changeColor('red')"></li>
+          <li id="purple" onclick="changeColor('purple')"></li>
+          <li id="orange" onclick="changeColor('orange')"></li>
+          <li id="eraser" onclick="toggleEraser()"></li>
+        </ul>
+      </div>
+ 
 
       <ul id="tileList" class="streamContainer">
           <li id="tile1" style="background-image: url('./images/people/1.jpg')" class="tile" onclick="expand('tile1')"><div class="name">Kelly Hamilton</div></li>
@@ -47,7 +115,7 @@
           <li id="tile5" style="background-image: url('./images/people/5.jpg')" class="tile" onclick="expand('tile5')"><div class="name">Mindy Simpson</div></li>
           <li id="tile6" style="background-image: url('./images/people/6.jpg')" class="tile" onclick="expand('tile6')"><div class="name">Gwen Smith</div></li>
           <li id="tile7" style="background-image: url('./images/people/7.jpg')" class="tile" onclick="expand('tile7')"><div class="name">Casey Bishop</div></li>
-          <li id="tile8" style="background-image: url('./images/people/8.jpg')" class="tile" onclick="expand('tile8')"><div class="name"> Katherine Blanco</div></li>
+          <li id="tile8" style="background-image: url('./images/people/8.jpg')" class="tile" onclick="expand('tile8')"><div class="name">Katherine Blanco</div></li>
           <li id="tile9" style="background-image: url('./images/people/9.jpg')" class="tile" onclick="expand('tile9')"><div class="name">Stephanie Love</div></li>
           <li id="tile10" style="background-image: url('./images/people/10.jpg')" class="tile" onclick="expand('tile10')"><div class="name">Tristan Xavier</div></li>
           <li id="tile11" style="background-image: url('./images/people/11.jpg')" class="tile" onclick="expand('tile11')"><div class="name">Vape Kid</div></li>
@@ -55,10 +123,13 @@
       </ul>      
     </div>
 
-    <!--Import jQuery before materialize.js-->
+     <!--Import jQuery before materialize.js-->
+     <!--JS Frameworks-->
+     <script src="./js/paper-full.min.js"></script>
      <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-    
+     <script src="./js/chalkboard.js"></script>
+
      <script>
          function expand(tile) {
              if (document.getElementById(tile).className === 'tile') {
@@ -71,24 +142,43 @@
 
          function toggleInformation(tool) {
              if (document.getElementById(tool).className === 'active') {
-                document.getElementById(tool).className = '';
+              document.getElementById(tool).className = '';
              }
              else {
-                document.getElementById(tool).className = 'active';
+              document.getElementById(tool).className = 'active';
              }
          }
 
          function togglePanel(panel) {
             if (document.getElementById('panel').className === 'active') {
-                document.getElementById('panel').className = '';
-                document.getElementById(panel).className = '';
+              document.getElementById('panel').className = '';
+              document.getElementById('panel-'+panel).style.display = 'none';
+              document.getElementById(panel).className = '';
             }
             else {
-                document.getElementById('panel').className = 'active';
-                document.getElementById(panel).className = 'active';
+              document.getElementById('panel').className = 'active';
+              document.getElementById('panel-'+panel).style.display = 'block';
+              document.getElementById(panel).className = 'active';
             }
-         }{}
+         }
+
+         function toggleChalkboard() {
+          if (document.getElementById('chalkboardContainer').className === 'active') {
+            document.getElementById('chalkboardContainer').className = '';
+            document.getElementById('chalk').className = '';
+          }
+          else {
+            document.getElementById('chalkboardContainer').className = 'active';
+            document.getElementById('chalk').className = 'active';
+            if (!chalkActivated) {
+              setTimeout( function() {
+                initializePaper();
+              }, 1000);      
+            }
+          }
+         }
 
      </script>
+     
     </body>
 </html>

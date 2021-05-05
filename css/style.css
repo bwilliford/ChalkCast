@@ -1,13 +1,17 @@
 @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css);
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500;&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap');
+
+:root {
+  --main-color: #1ac9b4;
+}
 
 html {
   cursor: url('../images/icons/cursor.png'), auto;
 }
 
 .loginButton {
-  background-color: #1ac9b4;
+  background-color: var(--main-color);
   border-radius: 20px;
   height: 40px;
   line-height: 40px;
@@ -18,7 +22,7 @@ html {
 
 .loginButton:hover {
   border-bottom: 0px solid #ddd;
-  background-color: #1ac9b4;
+  background-color: var(--main-color);
 }
 
 body {
@@ -28,12 +32,12 @@ body {
   color: #ddd;
   margin: 0;
   padding: 0;
-  font-family: 'Quicksand';
+  font-family: 'Quicksand', sans-serif;
   font-weight: 300;
 }
 
 a {
-  color: #1ac9b4;
+  color: var(--main-color);
 }
 
 a:hover {
@@ -84,7 +88,7 @@ span {
 }
 
 p {
-  font-family: 'Open Sans';
+  font-family: 'Open Sans', sans-serif;
   font-size: 1.2rem;
   font-weight: 400;
   color: #ddd;
@@ -156,7 +160,7 @@ p {
 }
 
 #cv h4{
-  color: #1ac9b4;
+  color: var(--main-color);
 }
 
 #cv .row .col {
@@ -188,7 +192,7 @@ p {
 #summary ul li {
   line-height: 30px;
   color: #eee;
-  background-color: #1ac9b4;
+  background-color: var(--main-color);
   border-radius: 15px;
   margin-bottom: 5px;
   max-width: 200px;
@@ -313,7 +317,7 @@ nav .button-collapse:hover {
   }
 
   .loginButton {
-    background-color: #1ac9b4;
+    background-color: var(--main-color);
     border-radius: 0px;
     height: 40px;
     line-height: 40px;
@@ -342,7 +346,7 @@ nav .button-collapse:hover {
 
   .down:hover {
     opacity: 1;
-    background-color: #1ac9b4;
+    background-color: var(--main-color);
     transition-duration: 0.5s;
   }
   .love {
@@ -379,7 +383,7 @@ nav .button-collapse:hover {
     #main-progressbar {
       width: 2px;
       height: 0%;
-      background-color: #1ac9b4;
+      background-color: var(--main-color);
       -webkit-transition: height .5s ease;
       -o-transition: height .5s ease;
       transition: height .5s ease;
@@ -430,18 +434,30 @@ nav .button-collapse:hover {
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: 48px;
+}
+
+h2 {
+  font-size: 36px;
+  text-align: center;
 }
 
 h3 {
+  font-size: 32px;
+  text-align: left;
+  line-height: 24px; 
+}
 
+.title {
+  padding: 0 20px;
 }
 
 h4 {
-  font-weight: 100;
+  font-size: 24px;
 }
 
 h5 {
+  font-size: 20px;
   font-weight: 300;
 }
 
@@ -607,7 +623,7 @@ nav .button-collapse {
 .publication:hover {
   opacity: 1;
   transition-duration: 0.5s;
-  border-left: 1px solid #1ac9b4;
+  border-left: 1px solid var(--main-color);
 }
 
 .education {
@@ -663,7 +679,7 @@ nav .button-collapse {
 }
 
 .email:hover {
-  background-color: #1ac9b4;
+  background-color: var(--main-color);
   transition-duration: 0.5s;
   height: 60px;
   width: 310px;
@@ -760,7 +776,7 @@ nav .button-collapse {
 
 .prev-project:hover {
   opacity: 1;
-  background-color: #1ac9b4;
+  background-color: var(--main-color);
   transition-duration: 0.5s;
 }
 
@@ -776,7 +792,7 @@ nav .button-collapse {
 
 .next-project:hover {
   opacity: 1;
-  background-color: #1ac9b4;
+  background-color: var(--main-color);
   transition-duration: 0.5s;
 }
 
@@ -837,23 +853,16 @@ nav .button-collapse {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #1ac9b4;
+  background-color: var(--main-color);
   height: 0px;
   width: 0px;
 }
 
-h2 {
-  font-size: 1.8em;
-  text-align: center;
-}
 
-h3 {
-  font-size: 1.4em;
-  text-align: center;
-}
 
 .brand-header {
-  color: #1ac9b4;
+  color: var(--main-color);
+  text-align: left;
 }
 
 .persona {
@@ -872,11 +881,12 @@ h3 {
 }
 
 .chalkboard {
-  background-color: #131D1F;
+
 }
 
 .whiteboard {
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
 }
 
 .exit {
@@ -884,8 +894,8 @@ h3 {
   width: 50px;
   height: 50px;
   position: fixed;
-  top: 10px;
-  right: 10px;
+  top: 12px;
+  right: 12px;
   cursor: pointer;
 }
 
@@ -1021,7 +1031,7 @@ h3 {
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
   color: #fff;
-  font-family: 'Open Sans';
+  font-family: 'Open Sans', sans-serif;
   font-size: 1.2em;
   position: absolute;
   padding: 0 20px;
@@ -1156,6 +1166,10 @@ h3 {
   background-image: url('../images/icons/quiz.svg');
 }
 
+#exit {
+  background-image: url('../images/icons/exitSession.svg');
+}
+
 /* Chat Panel */
 
 #panel {
@@ -1167,11 +1181,63 @@ h3 {
   background-color: rgba(0,0,0,0.7);
   backdrop-filter: blur(20px);
   z-index: 2;
-  border-radius: 30px;
+  border-radius: 24px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.3);
   transition-duration: 1s;
+  overflow: scroll;
 }
 
 #panel.active {
-  width: 400px;
+  width: 360px;
+}
+
+#panel li {
+  height: 40px;
+  line-height: 40px;
+  padding: 0 40px;
+  font-family: 'Open sans', sans-serif;
+  font-size: 18px;
+  transition-duration: 0.5s;
+  background-position: left center;
+  background-repeat: no-repeat;
+}
+
+#panel li:hover {
+  background-color: rgba(0,0,0,0.4);
+  transition-duration: 0.5s;
+  cursor: hand;
+}
+
+.indicator-active {
+  background-image: url('../images/icons/indicator-active.svg');
+}
+
+.indicator-absent {
+  opacity: 0.5;
+}
+
+.panelSection {
+  padding: 0 20px;
+  margin: 32px 0 32px 0;
+}
+
+/* Chalkboard Stuff */
+
+#chalkboardContainer {
+  position: fixed;
+  top: 2vh;
+  left: 90px;
+  width: 0px;
+  height: 96vh;
+  z-index: 2;
+  border-radius: 24px;
+  background-color: rgba(2, 17, 15, 0.95);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  transition-duration: 1s;
+  overflow: hidden;
+}
+
+#chalkboardContainer.active {
+  width: calc(100vw - 120px);
 }
