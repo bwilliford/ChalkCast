@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap');
 
 :root {
-  --main-color: #1ac9b4;
+  --main-color: #35B1A6;
 }
 
 html {
@@ -23,6 +23,21 @@ html {
 .loginButton:hover {
   border-bottom: 0px solid #ddd;
   background-color: var(--main-color);
+}
+
+.button {
+  background-color: var(--main-color);
+  border-radius: 20px;
+  height: 40px;
+  line-height: 40px;
+  font-family: 'Open Sans', sans-serif;
+  box-shadow: 0 5px 15px var(--main-color);
+  text-align: center;
+}
+
+.button:hover {
+  opacity: 0.8;
+  cursor: pointer;
 }
 
 body {
@@ -89,9 +104,9 @@ span {
 
 p {
   font-family: 'Open Sans', sans-serif;
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 400;
-  color: #ddd;
+  color: #ccc;
 }
 
 .img-container {
@@ -454,6 +469,7 @@ h3 {
 
 h4 {
   font-size: 24px;
+  line-height: 22px;
 }
 
 h5 {
@@ -1015,6 +1031,8 @@ nav .button-collapse {
   width: 240px;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
   color: #fff;
   font-family: 'Open Sans', sans-serif;
   font-size: 1.2em;
@@ -1022,6 +1040,14 @@ nav .button-collapse {
   padding: 0 12px 0 0px;
   bottom: 0px;
   left: calc(50% - 120px);
+  transition-duration: 1s;
+}
+
+.name.noVideo {
+  bottom: calc(50% - 10px);
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  transition-duration: 1s;
 }
 
 .audioToggle {
@@ -1109,14 +1135,14 @@ nav .button-collapse {
 }
 
 .informationToggles li:hover {
-  background-color: #86d0ca;
-  box-shadow: 0 5px 20px #86d0ca;
+  background-color: var(--main-color);
+  box-shadow: 0 5px 15px var(--main-color);
   cursor: pointer;
 }
 
 .informationToggles li.active {
-  background-color: #86d0ca;
-  box-shadow: 0 5px 20px #86d0ca;
+  background-color: var(--main-color);
+  box-shadow: 0 5px 15px var(--main-color);
 }
 
 .toolbar {
@@ -1193,10 +1219,38 @@ nav .button-collapse {
 /* Tile toolbar */
 
 #tileToolbar {
-  position: fixed;
-  top: 2vh;
-  left: 120px;
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  z-index: -1;
+  opacity: 0;
+  transition-duration: 1s;
+}
+
+#tileToolbar.active {
   z-index: 1;
+  opacity: 1;
+  transition-duration: 1s;
+}
+
+#tileToolbar li {
+  background-color: rgba(0,0,0,0.6);
+  backdrop-filter: blur(30px);
+  background-repeat: no-repeat;
+  line-height: 60px;
+  height: 60px;
+  width: 60px;
+  border-radius: 30px;
+  color: #fff;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.2em;
+  padding: 0 20px 0 30px;
+  margin: 0 auto;
+}
+
+#tileToolbar li:hover {
+  background-color: rgba(0,0,0,0.8);
+  cursor: pointer;
 }
 
 /* Chat Panel */
@@ -1269,6 +1323,75 @@ nav .button-collapse {
 
 #chatThread.active {
   width: 300px;
+}
+
+#threadName {
+  margin-left: 32px;
+}
+
+.chatFilter {
+  list-style-type: none;
+  margin-left: 20px;
+}
+
+.chatFilter li {
+  display: inline-block;
+  text-align: center;
+  font-weight: 500;
+  margin-right: 12px;
+  padding: 0 20px;
+}
+
+.chatFilter li.active {
+  background-color: var(--main-color);
+  border-radius: 20px;
+}
+
+.chatContainer {
+  background-color: rgba(0,0,0,0.4);
+  height: 440px;
+}
+
+.chat {
+  padding: 12px 20px;
+}
+
+.chatCaption {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+}
+
+.chatBubble {
+  padding: 8px 16px;
+  border-radius: 20px;
+  line-height: 24px;
+  background-color: rgba(0,0,0,0.4);
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+}
+
+.chatInputContainer {
+  padding: 0 20px 20px 20px;
+  position: relative;
+  bottom: 0px;
+  height: 60px;
+}
+
+.chatInput {
+  background-color: rgba(0,0,0,0.6) !important;
+  border-radius: 20px !important;
+  padding: 0 20px !important;
+  width: 224px !important;
+}
+
+.back {
+  background-image: url(../images/icons/back.svg);
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  top: 4px;
+  left: 4px;
+  cursor: pointer;
 }
 
 /* Chalkboard Stuff */

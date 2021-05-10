@@ -10,8 +10,8 @@ window.onload = (event) => {
 
         let tileImage = document.createElement('div');
         tileImage.className = "tileImage";
-        tileImage.style.backgroundImage = "url('./images/people/"+i+".jpg')";
-        
+        tileImage.id = "tileImage"+num;
+        tileImage.style.backgroundImage = "url('./images/people/"+i+".jpg')"; 
         tileImage.onclick = function() {
             expand("tile"+num);
         }
@@ -19,13 +19,14 @@ window.onload = (event) => {
         
         let name = document.createElement('div');
         name.className = "name";
+        name.id = "name"+num;
         name.textContent = "Student "+num;
         
         let videoToggle = document.createElement('div');
         videoToggle.className = "videoToggle"
         videoToggle.id = "video"+num;
         videoToggle.onclick = function() {
-            toggleVideo('video'+num)
+            toggleVideo(videoToggle.id, tileImage.id, name.id);
         }
         let audioToggle = document.createElement('div');
         audioToggle.className = "audioToggle"
@@ -40,12 +41,24 @@ window.onload = (event) => {
     }
 };
 
-function toggleVideo(tile) {
+function toggleVideo(tile, tileImage, name) {
     if (document.getElementById(tile).className === 'videoToggle') {
         document.getElementById(tile).className = 'videoToggle off';
+
+        //Remove bg image
+        document.getElementById(tileImage).style.display = "none";
+        
+        //Move name up and center
+        document.getElementById(name).className = "name noVideo";
     }
     else {
         document.getElementById(tile).className = 'videoToggle';
+        
+        //Add bg image
+        document.getElementById(tileImage).style.display = "block";
+        
+        //Move name down
+        document.getElementById(name).className = "name";
     }
 }
 
@@ -67,9 +80,15 @@ function expand(tile) {
             items[i].className = 'tile';
         }
         document.getElementById(tile).className = 'tile expanded';
+
+        //Activate tile specific menu
+        document.getElementById('tileToolbar').className = "active";
     }
     else if (document.getElementById(tile).className === 'tile expanded') {
         document.getElementById(tile).className = 'tile';
+
+        //Remove tile specific menu
+        document.getElementById('tileToolbar').className = "";
     }
 }
 

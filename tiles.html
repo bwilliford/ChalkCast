@@ -28,7 +28,7 @@
       </ul>
 
       <ul class="toolbar">
-        <li id="nudge"></li>
+        <!-- <li id="nudge"></li> -->
         <li id="chat" onclick="togglePanel('chat')"></li>
         <li id="groups"></li>
         <li id="chalk" onclick="toggleChalkboard()"></li>
@@ -63,13 +63,12 @@
             <div class="exit" onclick="togglePanel('settings')"></div>
             <h4 class="title">Settings</h4>
             <div class="panelSection">
+              <h4>Room Link</h4>
+              <div class="button">Copy Link</div>
+            </div>
+            <div class="panelSection">
               <h4>Participant Features</h4>
-              <p>Screen Share<div class="switch" style="float: right;">
-                <label>
-                  <input type="checkbox">
-                  <span class="lever"></span>
-                </label></div>
-              </p>
+              <p>Screen Share</p>
               <p>Chat with Everyone</p>
               <p>Direct Message Chat</p>
             </div>
@@ -87,8 +86,22 @@
       <div id="chatThread" style="display: block">
         <h4 class="title" id="threadName">Phil Mok</h4>
         <div class="back" onclick="toggleThread('exit')"></div>
-        <ul>
+        <ul class="chatFilter">
+          <li onclick="chatFilter('all')" class="active">All</li><li onclick="chatFilter('questions')">Questions</li><li onclick="chatFilter('links')">Links</li>
         </ul>
+        <ul class="chatContainer">
+          <li class="chat">
+            <div class="chatCaption"><strong>Student</strong> 12:45PM</div>
+            <div class="chatBubble">This is a chat that someone sent.</div>
+          </li>
+          <li class="chat">
+            <div class="chatCaption"><strong>Student</strong> 12:45PM</div>
+            <div class="chatBubble">This is a longer chat that someone sent where they rambled on.</div>
+          </li>
+        </ul>
+        <div class="chatInputContainer">
+          <input class="chatInput" placeholder="Type something here"></input>
+        </div>
       </div>
 
       <div id="chalkboardContainer">
@@ -106,7 +119,7 @@
       </div>
  
       <ul id="tileToolbar">
-        <li id="nudge">Nudge</li>
+        <li id="nudge"></li>
       </ul>
 
       <ul id="tileList" class="streamContainer">
