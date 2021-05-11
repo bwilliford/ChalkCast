@@ -34,6 +34,7 @@ function initializePaper() {
         path.add(event.point);
     }
     chalk.onMouseUp = function(event) {
+        path.smooth();
         if (strokeColor === 'white' || strokeColor === 'black') {
             sketch.push(path);
         }
