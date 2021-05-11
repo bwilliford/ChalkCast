@@ -55,6 +55,26 @@ body {
   font-weight: 300;
 }
 
+.down {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  margin-left: -50px;
+  border-radius: 50px;
+  background-image: url('../images/icons/down.svg');
+  opacity: 0.6;
+  transition-duration: 0.5s;
+  z-index: 2;
+}
+
+.down:hover {
+  opacity: 1;
+  background-color: var(--main-color);
+  transition-duration: 0.5s;
+}
+
 a {
   color: #fff;
 }
@@ -261,7 +281,7 @@ p {
 .home-wrap canvas {
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background-size: 100% 100%;
   cursor: url('../images/icons/cursor.png'), auto;
 }
@@ -352,25 +372,7 @@ nav .button-collapse:hover {
 
 @media only screen and (min-width: 601px){
 
-  .down {
-    width: 100px;
-    height: 100px;
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    margin-left: -50px;
-    border-radius: 50px;
-    background-image: url('../images/icons/down.svg');
-    opacity: 0.6;
-    transition-duration: 0.5s;
-    z-index: 2;
-  }
-
-  .down:hover {
-    opacity: 1;
-    background-color: var(--main-color);
-    transition-duration: 0.5s;
-  }
+  
   .love {
     display: inline-block;
     margin-left: 40px;
