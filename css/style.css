@@ -162,7 +162,7 @@ p {
 
 .main-section {
   padding: 100px 20px 150px 20px;
-  height: 100vh;
+  min-height: 100vh;
   background: #000 url('../images/bg.jpg') no-repeat fixed;
   cursor: url('../images/icons/cursor.png'), auto;
 }
@@ -281,7 +281,7 @@ p {
 .home-wrap canvas {
   position: absolute;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   background-size: 100% 100%;
   cursor: url('../images/icons/cursor.png'), auto;
 }
