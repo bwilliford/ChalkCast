@@ -1125,11 +1125,14 @@ nav .button-collapse {
   height: 100px;
   border-radius: 50px;
   background-color: #86d0ca;
+  cursor: pointer;
 }
+
+
 
 .informationToggles {
   position: fixed;
-  top: 110px;
+  top: 104px;
   left: 30px;
   width: 60px;
 }
@@ -1190,11 +1193,23 @@ nav .button-collapse {
 }
 
 #videoToggle {
+  background-image: url('../images/icons/videoOffBig.svg');
+}
+
+#videoToggle.active {
   background-image: url('../images/icons/video.svg');
 }
 
 #audioToggle {
+  background-image: url('../images/icons/audioOffBig.svg');
+}
+
+#audioToggle.active {
   background-image: url('../images/icons/audio.svg');
+}
+
+#raisehand {
+  background-image: url('../images/icons/raisehand.svg');
 }
 
 #nudge {
@@ -1424,6 +1439,84 @@ nav .button-collapse {
   width: calc(100vw - 120px);
 }
 
+/* Raised Hand */
+#yourRaisedHand {
+  background-image: url(../images/icons/raisehandActive.svg);
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  border-radius: 25px;
+  top: 36px;
+  left: 88px;
+  cursor: pointer;
+  background-color: #ea5d3a;
+  box-shadow: 0 5px 15px #ea5d3a;
+  z-index: -1;
+  opacity: 0;
+  display: block;
+  transition-duration: 0.5s;
+}
+
+#yourRaisedHand.active {
+  z-index: 3;
+  opacity: 1;
+  transition-duration: 0.5s;
+}
+
+/* Prev and Next */
+#prevButton {
+  background-image: url(../images/icons/back.svg);
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  border-radius: 25px;
+  z-index: -1;
+  position: absolute;
+  top: 40vh;
+  left: 136px;
+  opacity: 0;
+  transition-duration: 0.5s;
+}
+
+#nextButton {
+  background-image: url(../images/icons/next.svg);
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  border-radius: 25px;
+  z-index: -1;
+  position: absolute;
+  top: 40vh;
+  right: 16px;
+  opacity: 0;
+  transition-duration: 0.5s;
+}
+
+#prevButton:hover, #nextButton:hover {
+  background-color: rgba(0,0,0,0.6);
+  cursor: pointer;
+}
+
+#prevButton.active, #nextButton.active {
+  z-index: 2;
+  opacity: 1;
+  transition-duration: 0.5s;
+}
+
+
+/* Mobile */
+#mobileNav {
+  display: none;
+  z-index: 2;
+  height: 20vh;
+  width: 100%;
+  position: fixed;
+  bottom: 0px;
+  background: rgb(255,255,255);
+  background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(0,0,0,1) 100%);   
+}
+
+
 /* Responsive stuff */
 
 @media only screen and (max-width: 1440px) {
@@ -1446,6 +1539,25 @@ nav .button-collapse {
     overflow-y: scroll;
     margin: 0px;
     padding: 0px;
+  }
+
+  #informationToggles {
+    display: none;
+  }
+
+  #toolbar {
+    display: none;
+  }
+
+  #mobileNav {
+    display: block;
+  }
+
+  #yourStream {
+    z-index: 3;
+    left: 8px;
+    bottom: 8px;
+    top:unset;
   }
 }
 

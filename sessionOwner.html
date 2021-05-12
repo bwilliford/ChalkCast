@@ -11,6 +11,7 @@
     <!--Import materialize.css-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <link rel="stylesheet" href="./css/style.css" >
+    <!-- <link rel="stylesheet" href="./css/styleBubbles.css" > -->
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
    
@@ -19,7 +20,8 @@
   <body class="darkbody">
     <div style="padding: 0;">
       
-      <div id="yourStream" style="background-image: url('./images/people/teacher.jpg')"></div>
+      <div id="yourStream" style="background-image: url('./images/people/teacher.jpg')" onclick="expandYourStream()"></div>
+      <div id="yourRaisedHand"></div>
 
       <ul class="informationToggles">
           <li id="audioToggle" onclick="toggleInformation('audioToggle')" class="active"></li>
@@ -29,6 +31,7 @@
 
       <ul class="toolbar">
         <!-- <li id="nudge"></li> -->
+        <!-- <li id="raisehand" onclick="toggleRaisedHand()"></li> -->
         <li id="chat" onclick="togglePanel('chat')"></li>
         <li id="groups"></li>
         <li id="chalk" onclick="toggleChalkboard()"></li>
@@ -37,25 +40,15 @@
         <li id="exit"></li>
       </ul>
 
+      <div id="mobileNav">
+      </div>
+
       <div id="panel">
           <div id="panel-chat" style="display: none">
             <h4 class="title">Chat</h4>
             <div class="exit" onclick="togglePanel('chat')"></div>
-            <ul>
+            <ul id="chatList">
                 <li onclick="toggleThread('Everyone')">Everyone</li>
-                <li class="indicator-active" onclick="toggleThread('Kelly Hamilton')">Kelly Hamilton</li>
-                <li class="indicator-active" onclick="toggleThread('Billy Joel')">Billy Joel</li>
-                <li class="indicator-active" onclick="toggleThread('Monica Simpson')">Monica Simpson</li>
-                <li class="indicator-active" onclick="toggleThread('Maria Gonzales')">Maria Gonzales</li>
-                <li class="indicator-active" onclick="toggleThread('Brittany Rojas')">Brittany Rojas</li>
-                <li class="indicator-active" onclick="toggleThread('Mindy Simpson')">Mindy Simpson</li>
-                <li class="indicator-active" onclick="toggleThread('Casey Bishop')">Casey Bishop</li>
-                <li class="indicator-active" onclick="toggleThread('Gwen Smith')">Gwen Smith</li>
-                <li class="indicator-active" onclick="toggleThread('Katherine Blanco')">Katherine Blanco</li>
-                <li class="indicator-active" onclick="toggleThread('Stephanie Love')">Stephanie Love</li>
-                <li class="indicator-active" onclick="toggleThread('Tristan Xavier')">Tristan Xavier</li>
-                <li class="indicator-absent">Vape Kid</li>
-                <li class="indicator-absent">Daniel Lee</li>
             </ul>
           </div>
 
@@ -121,6 +114,9 @@
       <ul id="tileToolbar">
         <li id="nudge"></li>
       </ul>
+
+      <div id="prevButton" onclick="prevScreen()"></div>
+      <div id="nextButton" onclick="nextScreen()"></div>
 
       <ul id="tileList" class="streamContainer">
       </ul>      

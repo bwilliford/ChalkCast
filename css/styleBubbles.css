@@ -1,0 +1,66 @@
+.tile {
+  margin: 0 0.1% 1% 0;
+}
+
+.tileImage {
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  margin: 0 auto;
+  background-size: cover;
+  background-position: 50% 50%;
+  transition-duration: 1s;
+  cursor: nesw-resize;
+}
+
+.tileImage:hover {
+  opacity: 0.6;
+}
+
+.tile.expanded {
+  order: 0;
+  width: 100%;
+  height: 90vh;
+  transition-duration: 1s;
+}
+
+.tile.expanded .tileImage {
+  width: 100%;   
+  height: 100%;
+  border-radius: 0;
+}
+
+.tile.expanded:hover {
+  opacity: 1;
+}
+
+.tile.fullscreen {
+  width: 100%;
+  height: 100vh;
+  transition-duration: 1s;
+}
+
+.name {
+  background-color: rgba(0,0,0,0.6);
+  backdrop-filter: blur(30px);
+  line-height: 40px;
+  height: 40px;
+  width: 240px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  color: #fff;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.2em;
+  position: absolute;
+  padding: 0 12px 0 0px;
+  bottom: 0px;
+  left: calc(50% - 120px);
+  transition-duration: 1s;
+}
+
+.name.noVideo {
+  bottom: calc(50% - 10px);
+  transition-duration: 1s;
+}
