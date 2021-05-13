@@ -2,26 +2,26 @@ let expandedTile = "";
 let yourStreamExpanded = 0;
 
 let studentList = [
-    'Mr. Henneman',
+    'Devin Jackson',
     'Billy Hamilton',
     'Rebecca Kingsley',
     'Devin Jackson',
     'Ivania Martinez',
-    'Brittany Harrison',
+    'Bryan Harrison',
     'Casey Bishop',
-    'Kate Blanco',
+    'Keith Blanco',
     'Angie White',
     'Tristan Xavier',
     'Damien Smith',
     'Robert Lee',
-    'Annie Martinez',
-    'Brian Hammond',
-    'Jessica Brown',
-    'Grace Potter',
-    'Rachel McAdams',
-    'Blake Lively',
-    'Veronica Lee',
-    'Cathy Franklin'
+    // 'Annie Martinez',
+    // 'Brian Hammond',
+    // 'Jessica Brown',
+    // 'Grace Potter',
+    // 'Rachel McAdams',
+    // 'Blake Lively',
+    // 'Veronica Lee',
+    // 'Cathy Franklin'
 ]
 
 //Generate tiles on page load
@@ -38,7 +38,7 @@ window.onload = (event) => {
         let tileImage = document.createElement('div');
         tileImage.className = "tileImage";
         tileImage.id = "tileImage"+num;
-        tileImage.style.backgroundImage = "url('./images/people/"+i+".jpg')"; 
+        tileImage.style.backgroundImage = "url('./images/people/guitar"+i+".jpg')"; 
         //tileImage.style.backgroundImage = "url('./images/people/anonymous.jpg')";
         tileImage.onclick = function() {
             expand("tile"+num);

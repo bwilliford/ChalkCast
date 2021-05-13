@@ -1516,6 +1516,22 @@ nav .button-collapse {
   background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(0,0,0,1) 100%);   
 }
 
+/* Cards */
+.card {
+  border-radius: 16px;
+  padding-top: 20px;
+  box-shadow: 0px 5px 15px rgba(0,0,0,0.1);
+}
+
+.card img {
+  width: 200px;
+  height: 200px;
+  border-radius: 100px;
+  margin: 0 auto;
+  display: block;
+  cursor: pointer;
+}
+
 
 /* Responsive stuff */
 
