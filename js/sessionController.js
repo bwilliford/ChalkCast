@@ -265,6 +265,15 @@ function toggleRaisedHand() {
     }
 }
 
+function toggleNudge() {
+    if (document.getElementById('notification').className === 'active') {
+        document.getElementById('notification').className = '';
+    }
+    else {
+        document.getElementById('notification').className = 'active';
+    }
+}
+
 document.addEventListener('keydown', logKey);
 
 function logKey(e) {
