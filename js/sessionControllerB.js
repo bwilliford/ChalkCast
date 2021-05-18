@@ -351,10 +351,12 @@ function toggleFullscreen() {
         document.getElementById('expandedTile').className = 'active fullscreen';
         document.getElementById('tileToolbar').className = 'active fullscreen';
         document.getElementById('fullscreen').className = 'reduce';
+        document.getElementById('nextButton').className = 'active expanded';
     }
     else {
         document.getElementById('expandedTile').className = 'active';
         document.getElementById('tileToolbar').className = 'active';
         document.getElementById('fullscreen').className = '';
+        document.getElementById('nextButton').className = 'active';
     }
 }

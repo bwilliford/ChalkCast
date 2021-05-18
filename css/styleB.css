@@ -66,10 +66,18 @@
     position: fixed;
 }
 
-#nextButton {
+#nextButton.active {
+    top: 45vh;
     position: fixed;
+    z-index: 3;
 }
 
-#prevButton {
+#nextButton.active.expanded {
+    right: 1%;
+}
+
+#prevButton.active {
+    top: 45vh;
     position: fixed;
+    z-index: 3;
 }
