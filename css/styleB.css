@@ -1,0 +1,75 @@
+#tileList {
+    display: flex;
+    flex-wrap: wrap;
+    width: calc(100% - 120px);
+    position: absolute;
+    left: 120px;
+    overflow-y: scroll;
+    overflow-x:hidden;
+    margin: 0px;
+    padding: 0px;
+}
+
+#tileList.expanded {
+    flex-direction: column;
+    left: unset;
+    right: 0px;
+    top: 0px;
+    width: 20%;
+}
+
+#expandedTile {
+    width: 0;
+    height: 0;
+    transition-duration: 0.5s;
+    z-index: 2;
+}
+
+#expandedTile.active {
+    width: calc(80% - 120px);
+    position: fixed;
+    top: 0px;
+    left: 120px;
+    height: 100vh;
+    transition-duration: 0.5s;
+}
+
+#expandedTile.active.fullscreen {
+    width: 100%;
+    position: fixed;
+    top: 0px;
+    left: 120px;
+    height: 100vh;
+    transition-duration: 0.5s;
+}
+
+.tile {
+    height: 250px;
+}
+
+.tile.expanded {
+    order: 0;
+    width: 100%;
+    height: 100%;
+    transition-duration: 1s;
+}
+
+.tileImage:hover {
+    opacity: 1;
+}
+
+#nextButton {
+    right: 21%;
+}
+
+#tileToolbar {
+    position: fixed;
+}
+
+#nextButton {
+    position: fixed;
+}
+
+#prevButton {
+    position: fixed;
+}

@@ -1124,8 +1124,12 @@ nav .button-collapse {
   width: 100px;
   height: 100px;
   border-radius: 50px;
-  background-color: #86d0ca;
+  background-color: #000000;
   cursor: pointer;
+}
+
+#yourStream.active {
+  background-image: url('../images/people/teacher.jpg');
 }
 
 
@@ -1147,8 +1151,7 @@ nav .button-collapse {
 }
 
 .informationToggles li:hover {
-  background-color: var(--main-color);
-  box-shadow: 0 5px 15px var(--main-color);
+  opacity: 0.6;
   cursor: pointer;
 }
 
@@ -1216,6 +1219,14 @@ nav .button-collapse {
   background-image: url('../images/icons/nudge.svg');
 }
 
+#fullscreen {
+  background-image: url('../images/icons/focus.svg');
+}
+
+#fullscreen.reduce {
+  background-image: url('../images/icons/reduce.svg');
+}
+
 #settings {
   background-image: url('../images/icons/settings.svg');
 }
@@ -1243,21 +1254,27 @@ nav .button-collapse {
 /* Tile toolbar */
 
 #tileToolbar {
-  position: absolute;
-  top: 20px;
-  left: 50%;
+  position: relative;
+  top: 8px;
+  right: 21%;
   z-index: -1;
   opacity: 0;
   transition-duration: 1s;
 }
 
 #tileToolbar.active {
-  z-index: 1;
+  z-index: 3;
   opacity: 1;
-  transition-duration: 1s;
+  transition-duration: 0.5s;
+}
+
+#tileToolbar.active.fullscreen {
+  right: 1%;
+  transition-duration: 0.5s;
 }
 
 #tileToolbar li {
+  display: inline-block;
   background-color: rgba(0,0,0,0.6);
   backdrop-filter: blur(30px);
   background-repeat: no-repeat;
@@ -1287,7 +1304,7 @@ nav .button-collapse {
   height: 96vh;
   background-color: rgba(0,0,0,0.7);
   backdrop-filter: blur(20px);
-  z-index: 2;
+  z-index: 4;
   border-radius: 24px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.3);
   transition-duration: 1s;
@@ -1426,7 +1443,7 @@ nav .button-collapse {
   left: 90px;
   width: 0px;
   height: 96vh;
-  z-index: 2;
+  z-index: 4;
   border-radius: 24px;
   background-color: rgba(2, 17, 15, 0.95);
   backdrop-filter: blur(20px);
@@ -1468,10 +1485,9 @@ nav .button-collapse {
   background-image: url(../images/icons/back.svg);
   width: 50px;
   height: 50px;
-  position: fixed;
+  position: absolute;
   border-radius: 25px;
   z-index: -1;
-  position: absolute;
   top: 40vh;
   left: 136px;
   opacity: 0;
@@ -1482,10 +1498,9 @@ nav .button-collapse {
   background-image: url(../images/icons/next.svg);
   width: 50px;
   height: 50px;
-  position: fixed;
+  position: absolute;
   border-radius: 25px;
   z-index: -1;
-  position: absolute;
   top: 40vh;
   right: 16px;
   opacity: 0;

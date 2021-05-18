@@ -14,10 +14,10 @@ let studentList = [
     'Tristan Xavier',
     'Damien Smith',
     'Robert Lee',
-    // 'Annie Martinez',
-    // 'Brian Hammond',
-    // 'Jessica Brown',
-    // 'Grace Potter',
+    'Annie Martinez',
+    'Brian Hammond',
+    'Jessica Brown',
+    'Grace Potter',
     // 'Rachel McAdams',
     // 'Blake Lively',
     // 'Veronica Lee',
@@ -114,18 +114,36 @@ function toggleAudio(tile) {
 //Expand tile
 function expand(tile) {
     if (document.getElementById(tile).className === 'tile') {
-        //Reset any other tiles
-        let ul = document.getElementById("tileList");
-        let items = ul.getElementsByTagName("li");
-        for (let i = 0; i < items.length; i++) {
-            items[i].className = 'tile';
-        }
-        document.getElementById(tile).className = 'tile expanded';
+        //Activate expanded div
+        document.getElementById('expandedTile').className = "active";
+        document.getElementById('tileList').className = "expanded";
 
         //Activate tile specific menu and arrows
         document.getElementById('tileToolbar').className = "active";
         document.getElementById('prevButton').className = "active";
         document.getElementById('nextButton').className = "active";
+
+        //Check and see another tile is already expanded
+        if (document.getElementById('expandedTile').firstChild != null) {
+
+            document.getElementById('expandedTile').firstChild.className = 'tile';
+            
+            let tileIndex = parseInt(document.getElementById('expandedTile').firstChild.id.substring(4),10);
+            document.getElementById('tileList').insertBefore(document.getElementById('expandedTile').firstChild, document.getElementById('tileList').children[tileIndex-1]);
+            //document.getElementById('tileList').appendChild(document.getElementById('expandedTile').firstChild);
+        }
+
+        //Put tile in other div
+        document.getElementById('expandedTile').appendChild(document.getElementById(tile));
+        document.getElementById(tile).className = 'tile expanded';
+
+        //Make other tiles full width
+        let ul = document.getElementById("tileList");
+        let items = ul.getElementsByTagName("li");
+        for (let i = 0; i < items.length; i++) {
+            items[i].style.width = '100%';
+        }
+        
 
         //Update state of current tile
         expandedTile = parseInt(tile.substring(4),10);
@@ -134,7 +152,25 @@ function expand(tile) {
         window.scrollTo(0, 0);
     }
     else if (document.getElementById(tile).className === 'tile expanded') {
+
+        //Put back in tile list
         document.getElementById(tile).className = 'tile';
+
+        let tileIndex = parseInt(document.getElementById('expandedTile').firstChild.id.substring(4),10);
+        document.getElementById('tileList').insertBefore(document.getElementById('expandedTile').firstChild, document.getElementById('tileList').children[tileIndex-1]);
+        
+
+        //Dectivate expanded div
+        document.getElementById('expandedTile').className = "";
+        document.getElementById('tileList').className = "";
+        
+        //Make other tiles normal width
+        let ul = document.getElementById("tileList");
+        let items = ul.getElementsByTagName("li");
+        for (let i = 0; i < items.length; i++) {
+            items[i].style.width = '';
+        }
+
 
         //Remove tile specific menu and arrows
         document.getElementById('tileToolbar').className = "";
@@ -308,4 +344,17 @@ function nextScreen() {
         expandedTile = 1;
     }
     changeTile('tile'+expandedTile.toString());
+}
+
+function toggleFullscreen() {
+    if (document.getElementById('expandedTile').className === 'active') {
+        document.getElementById('expandedTile').className = 'active fullscreen';
+        document.getElementById('tileToolbar').className = 'active fullscreen';
+        document.getElementById('fullscreen').className = 'reduce';
+    }
+    else {
+        document.getElementById('expandedTile').className = 'active';
+        document.getElementById('tileToolbar').className = 'active';
+        document.getElementById('fullscreen').className = '';
+    }
 }
