@@ -2,7 +2,7 @@ let expandedTile = "";
 let yourStreamExpanded = 0;
 
 let studentList = [
-    'Jason Chan',
+    'Mr. Henneman',
     'Billy Hamilton',
     'Rebecca Kingsley',
     'Devin Jackson',

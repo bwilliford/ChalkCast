@@ -2,7 +2,7 @@ let expandedTile = "";
 let yourStreamExpanded = 0;
 
 let studentList = [
-    'Jason Chan',
+    'Mr. Henneman',
     'Billy Hamilton',
     'Rebecca Kingsley',
     'Devin Jackson',
@@ -14,14 +14,14 @@ let studentList = [
     'Tristan Xavier',
     'Damien Smith',
     'Robert Lee',
-    // 'Annie Martinez',
-    // 'Brian Hammond',
-    // 'Jessica Brown',
-    // 'Grace Potter',
-    // 'Rachel McAdams',
-    // 'Blake Lively',
-    // 'Veronica Lee',
-    // 'Cathy Franklin'
+    'Annie Martinez',
+    'Brian Hammond',
+    'Jessica Brown',
+    'Grace Potter',
+    'Rachel McAdams',
+    'Blake Lively',
+    'Veronica Lee',
+    'Cathy Franklin'
 ]
 
 //Generate tiles on page load
