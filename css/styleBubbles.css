@@ -64,3 +64,13 @@
   bottom: calc(50% - 10px);
   transition-duration: 1s;
 }
+
+.handTile {
+  top: 60px;
+  left: 60px;
+}
+
+.nudgeTile {
+  top: 60px;
+  right: 60px;
+}
