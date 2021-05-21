@@ -1008,7 +1008,11 @@ nav .button-collapse {
   background-size: cover;
   background-position: 50% 50%;
   transition-duration: 1s;
-  cursor: nesw-resize;
+  cursor: url('../images/icons/expandCursor.png'), auto;
+}
+
+.tileImage.expanded {
+  cursor: url('../images/icons/contractCursor.png'), auto;
 }
 
 .tileImage:hover {
@@ -1020,6 +1024,7 @@ nav .button-collapse {
   width: 100%;
   height: 90vh;
   transition-duration: 1s;
+  
 }
 
 .tile.expanded:hover {
@@ -1031,6 +1036,89 @@ nav .button-collapse {
   height: 100vh;
   transition-duration: 1s;
 }
+
+.nudgeTile {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 56px;
+  height: 56px;
+  border-radius: 28px;
+  background-color: rgba(0,0,0,0.6);
+  backdrop-filter: blur(30px);
+  background-image: url('../images/icons/nudge.svg');
+  cursor: pointer;
+  z-index: 2;
+  opacity: 0;
+  transition-duration: 0.5s;
+}
+
+.nudgeTile.active {
+  opacity: 1;
+  transition-duration: 0.5s;
+}
+
+.handTile {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 56px;
+  height: 56px;
+  border-radius: 28px;
+  cursor: pointer;
+  background-color: var(--main-color);
+  box-shadow: 0 5px 15px var(--main-color);
+  background-image: url(../images/icons/raisehandActive.svg);
+  opacity: 0;
+  transition-duration: 0.5s;
+}
+
+.handTile.active {
+  opacity: 1;
+  transition-duration: 0.5s;
+}
+
+.handTile2 {
+  position: absolute;
+  bottom: 20px;
+  left: 70%;
+  width: 56px;
+  height: 56px;
+  border-radius: 28px;
+  cursor: pointer;
+  background-color: var(--main-color);
+  box-shadow: 0 5px 15px var(--main-color);
+  background-image: url(../images/icons/raisehandActive.svg);
+  z-index: 2;
+  opacity: 0;
+  transition-duration: 0.5s;
+}
+
+.handTile2.active {
+  opacity: 1;
+  transition-duration: 0.5s;
+}
+
+.handTile3 {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 80px;
+  cursor: pointer;
+  background-image: url(../images/icons/raisehandActive.svg), linear-gradient(0deg, rgba(255,255,255,0) 0%, var(--main-color) 100%);
+  background-repeat: no-repeat;
+  background-position: center center;
+  opacity: 0;
+  transition-duration: 0.5s;
+}
+
+.handTile3.active {
+  opacity: 1;
+  transition-duration: 0.5s;
+}
+
+
 
 .name {
   background-color: rgba(0,0,0,0.6);

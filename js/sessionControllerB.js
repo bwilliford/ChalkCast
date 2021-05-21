@@ -2,26 +2,26 @@ let expandedTile = "";
 let yourStreamExpanded = 0;
 
 let studentList = [
-    'Mr. Henneman',
+    'Angelica Gomez',
     'Billy Hamilton',
     'Rebecca Kingsley',
     'Devin Jackson',
     'Ivania Martinez',
     'Breanna Harrison',
     'Casey Bishop',
-    'Keith Blanco',
+    'Kelly Blanco',
+    'Tristan Lee',
     'Angie White',
-    'Tristan Xavier',
-    'Damien Smith',
-    'Robert Lee',
+    'Daniela Lopez',
+    'Chad Brown',
     'Annie Martinez',
     'Brian Hammond',
     'Jessica Brown',
     'Grace Potter',
-    // 'Rachel McAdams',
-    // 'Blake Lively',
-    // 'Veronica Lee',
-    // 'Cathy Franklin'
+    'Robert Adams',
+    'Blake Lively',
+    'Veronica Lee',
+    'Cathy Franklin'
 ]
 
 //Generate tiles on page load
@@ -44,6 +44,13 @@ window.onload = (event) => {
             expand("tile"+num);
         }
         tile.appendChild(tileImage);
+
+        let handTile = document.createElement('div');
+        handTile.className = "handTile2";
+        handTile.id = "handTile"+num;
+        handTile.onclick = function() {
+            this.classList.toggle('active');
+        }
         
         let name = document.createElement('div');
         name.className = "name";
@@ -64,6 +71,7 @@ window.onload = (event) => {
         }
         name.appendChild(videoToggle);
         name.appendChild(audioToggle);
+        tile.appendChild(handTile);
         tile.appendChild(name);
         tileList.appendChild(tile);
 
@@ -77,6 +85,10 @@ window.onload = (event) => {
         }
         chatList.appendChild(chat);
     }
+
+    //Someone random raising their hand
+    let random = Math.floor(Math.random()*9) + 2;
+    document.getElementById('handTile'+random).classList.toggle('active');
 };
 
 //Toggle video on/off

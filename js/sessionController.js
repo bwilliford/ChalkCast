@@ -2,23 +2,23 @@ let expandedTile = "";
 let yourStreamExpanded = 0;
 
 let studentList = [
-    'Mr. Henneman',
+    'Angelica Gomez',
     'Billy Hamilton',
     'Rebecca Kingsley',
     'Devin Jackson',
     'Ivania Martinez',
     'Breanna Harrison',
     'Casey Bishop',
-    'Keith Blanco',
+    'Kelly Blanco',
+    'Tristan Lee',
     'Angie White',
-    'Tristan Xavier',
-    'Damien Smith',
-    'Robert Lee',
+    'Daniela Lopez',
+    'Chad Brown',
     'Annie Martinez',
     'Brian Hammond',
     'Jessica Brown',
     'Grace Potter',
-    'Rachel McAdams',
+    'Robert Adams',
     'Blake Lively',
     'Veronica Lee',
     'Cathy Franklin'
@@ -34,6 +34,12 @@ window.onload = (event) => {
         let tile = document.createElement('li');
         tile.id = "tile"+num;
         tile.className = "tile";
+        tile.onmouseover = function() {
+            toggleNudge("nudgeTile"+num);
+        }
+        tile.onmouseout = function() {
+            toggleNudge("nudgeTile"+num);
+        }
 
         let tileImage = document.createElement('div');
         tileImage.className = "tileImage";
@@ -41,9 +47,20 @@ window.onload = (event) => {
         tileImage.style.backgroundImage = "url('./images/people/"+i+".jpg')"; 
         //tileImage.style.backgroundImage = "url('./images/people/anonymous.jpg')";
         tileImage.onclick = function() {
-            expand("tile"+num);
+            expand("tile"+num, "tileImage"+num);
         }
         tile.appendChild(tileImage);
+
+        let nudgeTile = document.createElement('div');
+        nudgeTile.className = "nudgeTile";
+        nudgeTile.id = "nudgeTile"+num;
+
+        let handTile = document.createElement('div');
+        handTile.className = "handTile";
+        handTile.id = "handTile"+num;
+        handTile.onclick = function() {
+            this.classList.toggle('active');
+        }
         
         let name = document.createElement('div');
         name.className = "name";
@@ -64,6 +81,8 @@ window.onload = (event) => {
         }
         name.appendChild(videoToggle);
         name.appendChild(audioToggle);
+        tile.appendChild(nudgeTile);
+        tile.appendChild(handTile);
         tile.appendChild(name);
         tileList.appendChild(tile);
 
@@ -77,6 +96,10 @@ window.onload = (event) => {
         }
         chatList.appendChild(chat);
     }
+    
+    //Someone random raising their hand
+    let random = Math.floor(Math.random()*9) + 2;
+    document.getElementById('handTile'+random).classList.toggle('active');
 };
 
 //Toggle video on/off
@@ -112,15 +135,17 @@ function toggleAudio(tile) {
 }
 
 //Expand tile
-function expand(tile) {
+function expand(tile, tileImage) {
     if (document.getElementById(tile).className === 'tile') {
         //Reset any other tiles
         let ul = document.getElementById("tileList");
         let items = ul.getElementsByTagName("li");
         for (let i = 0; i < items.length; i++) {
             items[i].className = 'tile';
+            items[i].firstChild.className = 'tileImage';
         }
         document.getElementById(tile).className = 'tile expanded';
+        document.getElementById(tileImage).className = 'tileImage expanded';
 
         //Activate tile specific menu and arrows
         document.getElementById('tileToolbar').className = "active";
@@ -135,6 +160,7 @@ function expand(tile) {
     }
     else if (document.getElementById(tile).className === 'tile expanded') {
         document.getElementById(tile).className = 'tile';
+        document.getElementById(tile).firstChild.className = 'tileImage';
 
         //Remove tile specific menu and arrows
         document.getElementById('tileToolbar').className = "";
@@ -273,13 +299,8 @@ function toggleRaisedHand() {
     }
 }
 
-function toggleNudge() {
-    if (document.getElementById('notification').className === 'active') {
-        document.getElementById('notification').className = '';
-    }
-    else {
-        document.getElementById('notification').className = 'active';
-    }
+function toggleNudge(nudgeDOM) {
+    document.getElementById(nudgeDOM).classList.toggle('active');
 }
 
 document.addEventListener('keydown', logKey);
