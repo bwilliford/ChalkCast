@@ -3,15 +3,15 @@ let yourStreamExpanded = 0;
 
 let studentList = [
     'Angelica Gomez',
+    'Angie White',
     'Billy Hamilton',
-    'Rebecca Kingsley',
     'Devin Jackson',
     'Ivania Martinez',
     'Breanna Harrison',
     'Casey Bishop',
     'Kelly Blanco',
     'Tristan Lee',
-    'Angie White',
+    'Casey Bishop',
     'Daniela Lopez',
     'Chad Brown',
     'Annie Martinez',
