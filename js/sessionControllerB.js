@@ -128,7 +128,7 @@ function expand(tile) {
     if (document.getElementById(tile).className === 'tile') {
         //Activate expanded div
         document.getElementById('expandedTile').className = "active";
-        document.getElementById('tileList').className = "expanded";
+        document.getElementById('tileList').className = "expanded streamContainer";
 
         //Activate tile specific menu and arrows
         document.getElementById('tileToolbar').className = "active";
@@ -174,7 +174,7 @@ function expand(tile) {
 
         //Dectivate expanded div
         document.getElementById('expandedTile').className = "";
-        document.getElementById('tileList').className = "";
+        document.getElementById('tileList').className = "streamContainer";
         
         //Make other tiles normal width
         let ul = document.getElementById("tileList");

@@ -1722,7 +1722,7 @@ nav .button-collapse {
   }
 
   #sessionNav {
-    z-index: 2;
+    z-index: 3;
     height: 80px;
     width: 700px;
     position: fixed;
