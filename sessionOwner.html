@@ -20,28 +20,28 @@
   <body class="darkbody">
     <div style="padding: 0;">
       
-      <div id="yourStream" class="active" onclick="expandYourStream()"></div>
-      <div id="yourRaisedHand"></div>
+      <div id="sessionNav">
+        <div id="yourStream" class="active" onclick="expandYourStream()"></div>
+        <div id="yourRaisedHand"></div>
 
-      <ul class="informationToggles">
-          <li id="audioToggle" onclick="toggleInformation('audioToggle')" class="active"></li>
-          <li id="videoToggle" onclick="toggleInformation('videoToggle')" class="active"></li>
-          <li id="streamToggle" onclick="toggleInformation('streamToggle')"></li>
-      </ul>
+        <ul class="informationToggles">
+            <li id="audioToggle" onclick="toggleInformation('audioToggle')" class="active"></li>
+            <li id="videoToggle" onclick="toggleInformation('videoToggle')" class="active"></li>
+            <li id="streamToggle" onclick="toggleInformation('streamToggle')"></li>
+        </ul>
 
-      <ul class="toolbar">
-        <!-- <li id="nudge" onclick="toggleNudge()"></li> -->
-        <!-- <li id="raisehand" onclick="toggleRaisedHand()"></li> -->
-        <li id="chat" onclick="togglePanel('chat')"></li>
-        <li id="groups"></li>
-        <li id="chalk" onclick="toggleChalkboard()"></li>
-        <li id="quiz" onclick="togglePanel('quiz')"></li>
-        <li id="settings" onclick="togglePanel('settings')"></li>
-        <li id="exit"></li>
-      </ul>
-
-      <div id="mobileNav">
+        <ul class="toolbar">
+          <!-- <li id="nudge" onclick="toggleNudge()"></li> -->
+          <!-- <li id="raisehand" onclick="toggleRaisedHand()"></li> -->
+          <li id="chat" onclick="togglePanel('chat')"></li>
+          <li id="groups"></li>
+          <li id="chalk" onclick="toggleChalkboard()"></li>
+          <li id="quiz" onclick="togglePanel('quiz')"></li>
+          <li id="settings" onclick="togglePanel('settings')"></li>
+          <li id="exit"></li>
+        </ul>
       </div>
+      
 
       <div id="panel">
           <div id="panel-chat" style="display: none">

@@ -1210,21 +1210,19 @@ nav .button-collapse {
   top: 10px;
   left: 10px;
   width: 100px;
-  height: 100px;
-  border-radius: 50px;
+  height: 64px;
+  border-radius: 16px;
   background-color: #000000;
   cursor: pointer;
 }
 
 #yourStream.active {
-  background-image: url('../images/people/teacher.jpg');
+  background-image: url('../images/people/anonymous.jpg');
 }
-
-
 
 .informationToggles {
   position: fixed;
-  top: 104px;
+  top: 72px;
   left: 30px;
   width: 60px;
 }
@@ -1250,11 +1248,12 @@ nav .button-collapse {
 
 .toolbar {
   position: fixed;
-  top: 330px;
+  top: 288px;
   left: 30px;
   width: 60px;
   height: 360px;
   border-radius: 30px;
+  background-color: rgba(0,0,0,0.5);
 }
 
 .toolbar li {
@@ -1606,17 +1605,24 @@ nav .button-collapse {
   transition-duration: 0.5s;
 }
 
+.card .card-reveal {
+  background-color: rgba(255,255,255,0.8);
+  backdrop-filter: blur(15px);
+}
 
-/* Mobile */
-#mobileNav {
-  display: none;
+
+#sessionNav {
   z-index: 2;
-  height: 20vh;
-  width: 100%;
+  width: 120px;
   position: fixed;
-  bottom: 0px;
-  background: rgb(255,255,255);
-  background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(0,0,0,1) 100%);   
+  top: 0px;
+  left: 0px;
+  /* background: rgb(255,255,255);
+  background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(0,0,0,1) 100%);    */
+  background-color: rgba(0,0,0,0.6);
+  backdrop-filter: blur(30px);
+  border-top-right-radius: 24px;
+  border-top-left-radius: 24px;
 }
 
 /* Cards */
@@ -1669,11 +1675,12 @@ nav .button-collapse {
   }
 }
 
-@media only screen and (max-width: 1024px) {
-  .tile {
+@media only screen and (max-width: 1024px), screen and (max-height: 720px) {
+  
+  /* .tile {
     width: 49.9%;
     height: 200px;
-  }
+  } */
 
   .streamContainer {
     width: 100vw;
@@ -1682,18 +1689,51 @@ nav .button-collapse {
     overflow-y: scroll;
     margin: 0px;
     padding: 0px;
+    padding-bottom: 80px;
   }
 
-  #informationToggles {
-    display: none;
+  .informationToggles {
+    z-index: 3;
+    top:initial;
+    left: 120px;
+    bottom: -4px;
+    width: 300px;
+    height: 60px;
   }
 
-  #toolbar {
-    display: none;
+  .informationToggles li {
+    display: inline-block;
   }
 
-  #mobileNav {
-    display: block;
+  .toolbar {
+    z-index: 3;
+    top: initial;
+    left: initial;
+    right: 8px;
+    bottom: -4px;
+    display: inline-block;
+    width: unset;
+    height: 60px;
+  }
+
+  .toolbar li {
+    display: inline-block;
+  }
+
+  #sessionNav {
+    z-index: 2;
+    height: 80px;
+    width: 700px;
+    position: fixed;
+    top: unset;
+    bottom: 0px;
+    left: calc(50% - 350px);
+    /* background: rgb(255,255,255);
+    background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(0,0,0,1) 100%);    */
+    background-color: rgba(0,0,0,0.6);
+    backdrop-filter: blur(30px);
+    border-top-right-radius: 24px;
+    border-top-left-radius: 24px;
   }
 
   #yourStream {
@@ -1702,22 +1742,77 @@ nav .button-collapse {
     bottom: 8px;
     top:unset;
   }
+
+  #panel {
+    left: 0px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    height: 90vh;
+  }
+
+  #chatThread {
+    left: 300px;
+  }
+
+  #chalkboardContainer.active {
+    width: 100vw;
+    height: 100vh;
+    left: 0px;
+    top: 0px;
+    border-radius: 0px;
+  }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 700px) {
 
-  .streamContainer {
-    width: 100vw;
-    position: absolute;
-    left: 0px;
-    overflow-y: scroll;
-    margin: 0px;
-    padding: 0px;
+  .tile {
+    width: 49.9%;
+    height: 200px;
   }
 
   .home-wrap canvas {
     display: none;
   }
 
+  .name {
+    width: 200px;
+    left: calc(50% - 100px);
+  }
 
+  /* Hide functionality we dont need */
+
+  #streamToggle, #quiz, #chalk, #groups, .nudgeTile, .videoToggle, #prevButton, #nextButton {
+    display: none;
+  }
+
+  #sessionNav {
+    z-index: 2;
+    height: 80px;
+    width: 100%;
+    position: fixed;
+    top: unset;
+    bottom: 0px;
+    left: 0px;
+    /* background: rgb(255,255,255);
+    background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(0,0,0,1) 100%);    */
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+  }
+
+  #panel.active {
+    left: 0px;
+    top: 0px;
+    border-radius: 0px;
+    height: calc(100% - 80px);
+    width: 100vw;
+  }
+
+  #chatThread.active {
+    left: 0px;
+    top: 0px;
+    border-radius: 0px;
+    height: calc(100% - 80px);
+    width: 100vw;
+    z-index: 4;
+  }
 }

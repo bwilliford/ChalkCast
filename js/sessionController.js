@@ -181,7 +181,7 @@ function expandYourStream() {
         let tileImage = document.createElement('div');
         tileImage.className = "tileImage";
         tileImage.id = "yourTileImage";
-        tileImage.style.backgroundImage = "url('./images/people/teacher.jpg')"; 
+        tileImage.style.backgroundImage = "url('./images/people/anonymous.jpg')"; 
         tileImage.onclick = function() {
             expandYourStream();
         }
