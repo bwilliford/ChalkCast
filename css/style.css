@@ -1799,6 +1799,10 @@ nav .button-collapse {
     border-top-left-radius: 0;
   }
 
+  #yourStream {
+    width: 48px;
+  }
+
   #panel.active {
     left: 0px;
     top: 0px;
