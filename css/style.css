@@ -1809,7 +1809,23 @@ nav .button-collapse {
   .informationToggles {
     position: initial;
     float: left;
-    margin: 10px 0 8px 0;
+    margin: 16px 0 8px 0;
+    width: unset;
+  }
+
+  .informationToggles li {
+    height: 52px;
+    width: 52px;
+    
+  }
+
+  .toolbar {
+    height: 52px;
+  }
+
+  .toolbar li {
+    height: 52px;
+    width: 52px;
   }
 
   #panel.active {
