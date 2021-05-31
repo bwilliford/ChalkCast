@@ -34,6 +34,12 @@ window.onload = (event) => {
         let tile = document.createElement('li');
         tile.id = "tile"+num;
         tile.className = "tile";
+        tile.onmouseover = function() {
+            toggleNudge("nudgeTile"+num);
+        }
+        tile.onmouseout = function() {
+            toggleNudge("nudgeTile"+num);
+        }
 
         let tileImage = document.createElement('div');
         tileImage.className = "tileImage";
@@ -45,8 +51,19 @@ window.onload = (event) => {
         }
         tile.appendChild(tileImage);
 
+        let nudgeTile = document.createElement('div');
+        nudgeTile.className = "nudgeTile";
+        nudgeTile.id = "nudgeTile"+num;
+
+        let fullscreen = document.createElement('div');
+        fullscreen.className = "fullscreen";
+        fullscreen.id = "fullscreen"+num;
+        fullscreen.onclick = function() {
+            toggleFullscreen();
+        }
+
         let handTile = document.createElement('div');
-        handTile.className = "handTile2";
+        handTile.className = "handTile";
         handTile.id = "handTile"+num;
         handTile.onclick = function() {
             this.classList.toggle('active');
@@ -72,6 +89,8 @@ window.onload = (event) => {
         name.appendChild(videoToggle);
         name.appendChild(audioToggle);
         tile.appendChild(handTile);
+        tile.appendChild(nudgeTile);
+        tile.appendChild(fullscreen);
         tile.appendChild(name);
         tileList.appendChild(tile);
 
@@ -131,7 +150,7 @@ function expand(tile) {
         document.getElementById('tileList').className = "expanded streamContainer";
 
         //Activate tile specific menu and arrows
-        document.getElementById('tileToolbar').className = "active";
+        //document.getElementById('tileToolbar').className = "active";
         document.getElementById('prevButton').className = "active";
         document.getElementById('nextButton').className = "active";
 
@@ -149,6 +168,8 @@ function expand(tile) {
         document.getElementById('expandedTile').appendChild(document.getElementById(tile));
         document.getElementById(tile).className = 'tile expanded';
 
+        document.getElementById(tile).firstChild.className = 'tileImage expanded';
+
         //Make other tiles full width
         let ul = document.getElementById("tileList");
         let items = ul.getElementsByTagName("li");
@@ -156,9 +177,12 @@ function expand(tile) {
             items[i].style.width = '100%';
         }
         
-
         //Update state of current tile
         expandedTile = parseInt(tile.substring(4),10);
+
+        //Updade tile toolbar
+        document.getElementById('fullscreen'+expandedTile).className = 'fullscreen active';
+        document.getElementById('nudgeTile'+expandedTile).className = 'nudgeTile expanded';
 
         //Window
         window.scrollTo(0, 0);
@@ -171,7 +195,6 @@ function expand(tile) {
         let tileIndex = parseInt(document.getElementById('expandedTile').firstChild.id.substring(4),10);
         document.getElementById('tileList').insertBefore(document.getElementById('expandedTile').firstChild, document.getElementById('tileList').children[tileIndex-1]);
         
-
         //Dectivate expanded div
         document.getElementById('expandedTile').className = "";
         document.getElementById('tileList').className = "streamContainer";
@@ -183,9 +206,12 @@ function expand(tile) {
             items[i].style.width = '';
         }
 
+        //Updade tile toolbar
+        document.getElementById('fullscreen'+expandedTile).className = 'fullscreen';
+        document.getElementById('nudgeTile'+expandedTile).className = 'nudgeTile';
 
         //Remove tile specific menu and arrows
-        document.getElementById('tileToolbar').className = "";
+        //document.getElementById('tileToolbar').className = "";
         document.getElementById('prevButton').className = "";
         document.getElementById('nextButton').className = "";
     }
@@ -201,7 +227,7 @@ function expandYourStream() {
         tile.className = "tile";
 
         let tileImage = document.createElement('div');
-        tileImage.className = "tileImage";
+        tileImage.className = "tileImage expanded";
         tileImage.id = "yourTileImage";
         tileImage.style.backgroundImage = "url('./images/people/teacher.jpg')"; 
         tileImage.onclick = function() {
@@ -321,13 +347,8 @@ function toggleRaisedHand() {
     }
 }
 
-function toggleNudge() {
-    if (document.getElementById('notification').className === 'active') {
-        document.getElementById('notification').className = '';
-    }
-    else {
-        document.getElementById('notification').className = 'active';
-    }
+function toggleNudge(nudgeDOM) {
+    document.getElementById(nudgeDOM).classList.toggle('active');
 }
 
 document.addEventListener('keydown', logKey);
@@ -361,14 +382,14 @@ function nextScreen() {
 function toggleFullscreen() {
     if (document.getElementById('expandedTile').className === 'active') {
         document.getElementById('expandedTile').className = 'active fullscreen';
-        document.getElementById('tileToolbar').className = 'active fullscreen';
-        document.getElementById('fullscreen').className = 'reduce';
+        //document.getElementById('tileToolbar').className = 'active fullscreen';
+        document.getElementById('fullscreen'+expandedTile).className = 'fullscreen reduce';
         document.getElementById('nextButton').className = 'active expanded';
     }
     else {
         document.getElementById('expandedTile').className = 'active';
-        document.getElementById('tileToolbar').className = 'active';
-        document.getElementById('fullscreen').className = '';
+        //document.getElementById('tileToolbar').className = 'active';
+        document.getElementById('fullscreen'+expandedTile).className = 'fullscreen active';
         document.getElementById('nextButton').className = 'active';
     }
 }
