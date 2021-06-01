@@ -1191,7 +1191,7 @@ nav .button-collapse {
   height: 40px;
   width: 40px;
   border-radius: 20px;
-  background-image: url('../images/icons/equalizer2.gif');
+  background-image: url('../images/icons/audioOn.svg');
   background-size: 40px 40px;
   background-repeat: no-repeat;
   float: left;
@@ -1461,7 +1461,7 @@ nav .button-collapse {
 }
 
 .indicator-active {
-  background-image: url('../images/icons/equalizer2.gif');
+  background-image: url('../images/icons/audioOn.svg');
 
 }
 
