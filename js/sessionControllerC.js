@@ -51,9 +51,9 @@ window.onload = (event) => {
         }
         tile.appendChild(tileImage);
 
-        let nudgeTile = document.createElement('div');
-        nudgeTile.className = "nudgeTile";
-        nudgeTile.id = "nudgeTile"+num;
+        // let nudgeTile = document.createElement('div');
+        // nudgeTile.className = "nudgeTile";
+        // nudgeTile.id = "nudgeTile"+num;
 
         let fullscreen = document.createElement('div');
         fullscreen.className = "fullscreen";
@@ -74,22 +74,23 @@ window.onload = (event) => {
         name.id = "name"+num;
         name.textContent = studentList[i-1];
         
-        let videoToggle = document.createElement('div');
-        videoToggle.className = "videoToggle"
-        videoToggle.id = "video"+num;
-        videoToggle.onclick = function() {
-            toggleVideo(videoToggle.id, tileImage.id, name.id);
-        }
+        // let videoToggle = document.createElement('div');
+        // videoToggle.className = "videoToggle"
+        // videoToggle.id = "video"+num;
+        // videoToggle.onclick = function() {
+        //     toggleVideo(videoToggle.id, tileImage.id, name.id);
+        // }
+
         let audioToggle = document.createElement('div');
         audioToggle.className = "audioToggle"
         audioToggle.id = "audio"+num.toString();;
         audioToggle.onclick = function() {
             toggleAudio('audio'+num)
         }
-        name.appendChild(videoToggle);
+        // name.appendChild(videoToggle);
         name.appendChild(audioToggle);
         tile.appendChild(handTile);
-        tile.appendChild(nudgeTile);
+        // tile.appendChild(nudgeTile);
         tile.appendChild(fullscreen);
         tile.appendChild(name);
         tileList.appendChild(tile);

@@ -11,8 +11,7 @@
     <!--Import materialize.css-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <link rel="stylesheet" href="./css/style.css" >
-    <link rel="stylesheet" href="./css/styleB.css" >
-    <!-- <link rel="stylesheet" href="./css/styleBubbles.css" > -->
+    <link rel="stylesheet" href="./css/styleBubbles.css" >
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
    
@@ -20,27 +19,28 @@
 
   <body class="darkbody">
     <div style="padding: 0;">
+      
+      <div id="yourStream" style="background-image: url('./images/people/teacher.jpg')" onclick="expandYourStream()"></div>
+      <div id="yourRaisedHand" onclick="toggleRaisedHand()"></div>
 
-      <div id="sessionNav">
-        <div id="yourStream" class="active" onclick="expandYourStream()"></div>
-        <div id="yourRaisedHand"></div>
+      <ul class="informationToggles">
+          <li id="audioToggle" onclick="toggleInformation('audioToggle')" class="active"></li>
+          <li id="videoToggle" onclick="toggleInformation('videoToggle')" class="active"></li>
+          <li id="streamToggle" onclick="toggleInformation('streamToggle')"></li>
+      </ul>
 
-        <ul class="informationToggles">
-            <li id="audioToggle" onclick="toggleInformation('audioToggle')" class="active"></li>
-            <li id="videoToggle" onclick="toggleInformation('videoToggle')" class="active"></li>
-            <li id="streamToggle" onclick="toggleInformation('streamToggle')"></li>
-        </ul>
+      <ul class="toolbar">
+        <!-- <li id="nudge"></li> -->
+        <li id="raisehand" onclick="toggleRaisedHand()"></li>
+        <li id="chat" onclick="togglePanel('chat')"></li>
+        <li id="groups"></li>
+        <li id="chalk" onclick="toggleChalkboard()"></li>
+        <li id="quiz" onclick="togglePanel('quiz')"></li>
+        <li id="settings" onclick="togglePanel('settings')"></li>
+        <li id="exit"></li>
+      </ul>
 
-        <ul class="toolbar">
-          <!-- <li id="nudge" onclick="toggleNudge()"></li> -->
-          <li id="raisehand" onclick="toggleRaisedHand()"></li>
-          <li id="chat" onclick="togglePanel('chat')"></li>
-          <!-- <li id="groups"></li> -->
-          <!-- <li id="chalk" onclick="toggleChalkboard()"></li>
-          <li id="quiz" onclick="togglePanel('quiz')"></li> -->
-          <li id="settings" onclick="togglePanel('settings')"></li>
-          <li id="exit"></li>
-        </ul>
+      <div id="mobileNav">
       </div>
 
       <div id="panel">
@@ -110,15 +110,16 @@
           <li id="eraser" onclick="toggleEraser()"></li>
         </ul>
       </div>
+ 
+      <ul id="tileToolbar">
+        <!-- <li id="nudge"></li> -->
+      </ul>
 
+      <ul id="tileList" class="streamContainer">
+      </ul>   
+      
       <div id="prevButton" onclick="prevScreen()"></div>
       <div id="nextButton" onclick="nextScreen()"></div>
-
-      <div id="expandedTile"></div>
-      <ul id="tileList" class="streamContainer">
-      </ul>      
-
-      <div id="notification">Select a student to nudge</div>
 
 
     </div>
@@ -129,6 +130,6 @@
      <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
      <script src="./js/chalkboard.js"></script>
-     <script src="./js/sessionControllerC.js"></script>
+     <script src="./js/sessionController.js"></script>
     </body>
 </html>

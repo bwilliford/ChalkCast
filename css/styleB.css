@@ -80,7 +80,7 @@
     z-index: 3;
 }
 
-@media only screen and (max-width: 1024px), screen and (max-height: 720px) {
+@media only screen and (max-width: 1024px), screen and (max-height: 600px) {
     #expandedTile.active {
         left: 0px;
         width: 80%;
