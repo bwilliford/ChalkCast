@@ -31,7 +31,7 @@ html {
   height: 40px;
   line-height: 40px;
   font-family: 'Open Sans', sans-serif;
-  font-size: 1.2em;
+  font-size: 1.6em;
   box-shadow: 0 5px 15px var(--main-color);
   text-align: center;
   width: 200px;
@@ -1376,6 +1376,21 @@ nav .button-collapse {
 
 #exit {
   background-image: url('../images/icons/exitSession.svg');
+  width: 6rem;
+  height: 6rem;
+  background-color: #af2323;
+  box-shadow: 0px 5px 15px #af232390;
+  /* background-color: rgba(0,0,0,0.6); */
+  border-radius: 3rem;
+  position: fixed;
+  bottom: 16px;
+  left: 30px;
+  cursor: hand;
+}
+
+#exit:hover {
+  opacity: 0.9;
+  background-image: url('../images/icons/exitSession3.svg');
 }
 
 /* Tile toolbar */
@@ -1447,7 +1462,7 @@ nav .button-collapse {
   line-height: 40px;
   padding: 0 40px 0 44px;
   font-family: 'Open sans', sans-serif;
-  font-size: 18px;
+  font-size: 1.6rem;
   transition-duration: 0.5s;
   background-size: 30px 30px;
   background-position: 10px 5px;
@@ -1505,15 +1520,25 @@ nav .button-collapse {
 .chatFilter li {
   display: inline-block;
   text-align: center;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: 500;
   margin-right: 12px;
+  border-radius: 20px;
   padding: 0 20px;
+  cursor: pointer;
+  background-color: rgba(0,0,0,0.4);
 }
 
-.chatFilter li.active {
+#allFilter.active {
   background-color: var(--main-color);
-  border-radius: 20px;
+}
+
+#questionsFilter.active {
+  background-color: #1998d3;
+}
+
+#linksFilter.active {
+  background-color: #6622be;
 }
 
 .chatContainer {
@@ -1714,7 +1739,7 @@ nav .button-collapse {
   }
 }
 
-@media only screen and (max-width: 1024px), screen and (max-height: 600px) {
+@media only screen and (max-width: 980px), screen and (max-height: 600px) {
   
   .tile {
     width: 33.2%;
@@ -1722,7 +1747,7 @@ nav .button-collapse {
 
   .streamContainer {
     width: 100vw;
-    height: calc(100vh - 80px);
+    height: 100%;
     position: absolute;
     left: 0px;
     overflow-y: scroll;
@@ -1733,7 +1758,9 @@ nav .button-collapse {
 
   .informationToggles {
     z-index: 3;
-    top:initial;
+    position: unset;
+    display: inline-block;
+    top: initial;
     left: 120px;
     bottom: 0px;
     width: 190px;
@@ -1748,11 +1775,10 @@ nav .button-collapse {
     z-index: 3;
     top: initial;
     left: initial;
-    right: 8px;
-    bottom: 0px;
     display: inline-block;
     width: unset;
     height: 60px;
+    margin: 10px 0px 0px 16px;
   }
 
   .toolbar li {
@@ -1762,22 +1788,24 @@ nav .button-collapse {
   #sessionNav {
     z-index: 3;
     height: 80px;
-    width: 100%;
+    width: 600px;
     position: fixed;
     top: unset;
     bottom: 0px;
-    left: 0px;
+    left: calc(50vw - 300px);
     /* background: rgb(255,255,255);
     background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(0,0,0,1) 100%);    */
-    /* background-color: rgba(0,0,0,0.6);
-    backdrop-filter: blur(30px); */
+    background-color: rgba(0,0,0,0.6);
+    backdrop-filter: blur(30px);
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
   }
 
   #yourStream {
     z-index: 3;
-    left: 8px;
-    bottom: 8px;
-    top:unset;
+    position: unset;
+    display: inline-block;
+    margin: 0px 8px 8px 8px;
   }
 
   #panel {
@@ -1804,9 +1832,15 @@ nav .button-collapse {
     bottom: 60px;
     left: 8px;
   }
+
+  #exit {
+    left: unset;
+    right: 12px;
+    bottom: 10px;
+  }
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 768px) {
 
   .tile {
     width: 49.9%;
@@ -1864,7 +1898,7 @@ nav .button-collapse {
 
   .toolbar {
     height: 52px;
-    bottom: 4px;
+    bottom: 14px;
   }
 
   .toolbar li {
@@ -1887,5 +1921,11 @@ nav .button-collapse {
     height: calc(100% - 80px);
     width: 100vw;
     z-index: 4;
+  }
+
+  #exit {
+    height: 52px;
+    width: 52px;
+    bottom: 14px;
   }
 }

@@ -39,8 +39,10 @@
           <!-- <li id="chalk" onclick="toggleChalkboard()"></li>
           <li id="quiz" onclick="togglePanel('quiz')"></li> -->
           <li id="settings" onclick="togglePanel('settings')"></li>
-          <li id="exit"></li>
+          
         </ul>
+
+        <div id="exit"></div>
       </div>
 
       <div id="panel">
@@ -79,8 +81,9 @@
       <div id="chatThread" style="display: block">
         <h4 class="title" id="threadName">Phil Mok</h4>
         <div class="back" onclick="toggleThread('exit')"></div>
+        <div class="button bootUser">Boot</div>
         <ul class="chatFilter">
-          <li onclick="chatFilter('all')" class="active">All</li><li onclick="chatFilter('questions')">Questions</li><li onclick="chatFilter('links')">Links</li>
+          <li id="allFilter" onclick="chatFilter('all')" class="active">All</li><li id="questionsFilter" onclick="chatFilter('questions')">Questions</li><li id="linksFilter" onclick="chatFilter('links')">Links</li>
         </ul>
         <ul class="chatContainer">
           <li class="chat">

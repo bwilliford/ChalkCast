@@ -335,3 +335,7 @@ function nextScreen() {
     }
     changeTile('tile'+expandedTile.toString());
 }
+
+function chatFilter() {
+    
+}

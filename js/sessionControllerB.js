@@ -393,3 +393,10 @@ function toggleFullscreen() {
         document.getElementById('nextButton').className = 'active';
     }
 }
+
+function chatFilter(filter) {
+    document.getElementById('allFilter').className = '';
+    document.getElementById('questionsFilter').className = '';
+    document.getElementById('linksFilter').className = '';
+    document.getElementById(filter+'Filter').classList.toggle('active');
+}
