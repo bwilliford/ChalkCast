@@ -96,7 +96,12 @@ window.onload = (event) => {
 
         let chatList = document.getElementById('chatList');       
         let chat = document.createElement('li');
-        chat.className = "indicator-active";
+        if (i < 16) {
+            chat.className = "active";
+        }
+        else {
+            chat.className = "inactive";
+        }
         chat.textContent = studentList[i-1];
         let studentName = studentList[i-1];
         chat.onclick = function() {
@@ -108,6 +113,11 @@ window.onload = (event) => {
     //Someone random raising their hand
     let random = Math.floor(Math.random()*9) + 2;
     document.getElementById('handTile'+random).classList.toggle('active');
+
+    document.getElementById('notification').classList.toggle('active');
+    setTimeout( function() {
+        document.getElementById('notification').classList.toggle('active');
+    }, 3000);
 };
 
 //Toggle video on/off

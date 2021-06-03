@@ -9,10 +9,8 @@
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <link rel="stylesheet" href="./css/style.css" >
-    <link rel="stylesheet" href="./css/styleB.css" >
-    <link rel="stylesheet" href="./css/styleBubbles.css" >
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
    
@@ -22,30 +20,20 @@
     <div style="padding: 0;">
 
       <div id="sessionNav">
-
         <div id="yourStream" class="active" onclick="expandYourStream()"></div>
-        <div id="reverseCamera"></div>
+        <div id="yourRaisedHand"></div>
 
         <ul class="informationToggles">
             <li id="audioToggle" onclick="toggleInformation('audioToggle')" class="active"></li>
             <li id="videoToggle" onclick="toggleInformation('videoToggle')" class="active"></li>
             <li id="streamToggle" onclick="toggleInformation('streamToggle')"></li>
-            <li id="raisehandToggle" onclick="toggleInformation('raisehandToggle')"></li>
         </ul>
 
         <ul class="toolbar">
-          <!-- <li id="nudge" onclick="toggleNudge()"></li> -->
-          
           <li id="chat" onclick="togglePanel('chat')"><div id="newChatIndicator">3</div></li>
-          <!-- <li id="groups"></li> -->
-          <!-- <li id="chalk" onclick="toggleChalkboard()"></li>
-          <li id="quiz" onclick="togglePanel('quiz')"></li> -->
-          <li id="settings" onclick="togglePanel('settings')"></li>
-          
         </ul>
 
         <div id="exit"></div>
-
       </div>
 
       <div id="panel">
@@ -84,6 +72,7 @@
       <div id="chatThread" style="display: block">
         <h4 class="title" id="threadName">Phil Mok</h4>
         <div class="back" onclick="toggleThread('exit')"></div>
+        <div class="button boot">Remove</div>
         <ul class="chatFilter">
           <li id="allFilter" onclick="chatFilter('all')" class="active">All</li><li id="questionsFilter" onclick="chatFilter('questions')">Questions</li><li id="linksFilter" onclick="chatFilter('links')">Links</li>
         </ul>

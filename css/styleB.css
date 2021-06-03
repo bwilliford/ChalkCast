@@ -24,11 +24,11 @@
 }
 
 #expandedTile.active {
-    width: calc(80% - 120px);
+    width: calc(80% - 128px);
     position: fixed;
-    top: 0px;
+    top: 12px;
     left: 120px;
-    height: 100vh;
+    height: calc(100vh - 24px);
     transition-duration: 0.5s;
 }
 
@@ -79,7 +79,7 @@
     z-index: 3;
 }
 
-@media only screen and (max-width: 1024px), screen and (max-height: 600px) {
+@media only screen and (max-width: 980px), screen and (max-height: 600px) {
     #expandedTile.active {
         left: 0px;
         width: 80%;

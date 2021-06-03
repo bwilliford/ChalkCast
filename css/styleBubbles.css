@@ -1,76 +1,54 @@
-.tile {
-  margin: 0 0.1% 1% 0;
-}
-
 .tileImage {
-  width: 280px;
-  height: 280px;
-  border-radius: 50%;
-  margin: 0 auto;
-  background-size: cover;
-  background-position: 50% 50%;
-  transition-duration: 1s;
-  cursor: nesw-resize;
+  border-radius: 24px;
 }
 
-.tileImage:hover {
-  opacity: 0.6;
+.streamContainer.expanded {
+  margin-top: 12px;
 }
 
-.tile.expanded {
-  order: 0;
-  width: 100%;
-  height: 90vh;
-  transition-duration: 1s;
+#tileList {
+  margin-top: 12px;
 }
 
-.tile.expanded .tileImage {
-  width: 100%;   
-  height: 100%;
-  border-radius: 0;
+.tile {
+  width: 19.6%;
+  margin: 0px 0.4% 0.4% 0px;
 }
 
-.tile.expanded:hover {
-  opacity: 1;
+#expandedTile.active.fullscreen {
+  border-radius: 0px;
 }
 
-.tile.fullscreen {
-  width: 100%;
-  height: 100vh;
-  transition-duration: 1s;
+#expandedTile.active.fullscreen .tileImage {
+  border-radius: 0px;
 }
 
-.name {
-  background-color: rgba(0,0,0,0.6);
-  backdrop-filter: blur(30px);
-  line-height: 40px;
-  height: 40px;
-  width: 240px;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-  color: #fff;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 1.2em;
-  position: absolute;
-  padding: 0 12px 0 0px;
-  bottom: 0px;
-  left: calc(50% - 120px);
-  transition-duration: 1s;
+@media only screen and (max-width: 1440px) {
+  .tile {
+    width: 24.6%;
+    margin: 0px 0.4% 0.4% 0px;
+    height: 200px;
+  }
 }
 
-.name.noVideo {
-  bottom: calc(50% - 10px);
-  transition-duration: 1s;
+@media only screen and (max-width: 1024px), screen and (max-height: 600px) {
+  #expandedTile.active {
+      left: 0px;
+      width: 80%;
+      height: calc(100vh - 104px);
+  }
+
+  .tile {
+    width: 32.8%;
+    margin: 0px 0.4% 0.4% 0px;
+  }
 }
 
-.handTile {
-  top: 60px;
-  left: 60px;
-}
+@media only screen and (max-width: 768px) {
+  .tile {
+    width: 49.6%;
+    height: 200px;
+    margin: 0px 0.4% 0.4% 0px;
+  }
 
-.nudgeTile {
-  top: 60px;
-  right: 60px;
 }

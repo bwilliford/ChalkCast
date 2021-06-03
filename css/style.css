@@ -10,6 +10,12 @@ html {
   font-size: 10px;
 }
 
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
 .loginButton {
   background-color: var(--main-color);
   border-radius: 20px;
@@ -36,7 +42,6 @@ html {
   text-align: center;
   width: 200px;
   opacity: 1;
-  margin: 0 auto;
   transition-duration: 0.5s;
 }
 
@@ -44,6 +49,18 @@ html {
   opacity: 0.8;
   cursor: pointer;
   transition-duration: 0.5s;
+}
+
+.boot {
+  background-color: #af2323;
+  box-shadow: 0 5px 15px #af232390;
+  background-image: url('../images/icons/boot.svg');
+  background-position: left center;
+  background-repeat: no-repeat; 
+  text-align: right;
+  padding: 0 20px;
+  width: 80px;
+  margin: 0px 0px 20px 20px;
 }
 
 body {
@@ -459,6 +476,12 @@ nav .button-collapse:hover {
     }
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 400;
+  margin: 0px;
+  padding: 0px;
+}
+
 h1 {
   font-size: 4.8rem;
 }
@@ -471,7 +494,6 @@ h2 {
 h3 {
   font-size: 3.2rem;
   text-align: left;
-  line-height: 3.2rem; 
 }
 
 .title {
@@ -480,16 +502,14 @@ h3 {
 
 h4 {
   font-size: 2.4rem;
-  line-height: 3.2rem;
+  line-height: 6rem;
 }
 
 h5 {
   font-size: 2rem;
-  font-weight: 300;
 }
 
 h6 {
-  font-weight: 300;
   font-size: 1.8rem;
 }
 
@@ -921,8 +941,8 @@ nav .button-collapse {
   width: 50px;
   height: 50px;
   position: fixed;
-  top: 4px;
-  right: 4px;
+  top: 8px;
+  right: 8px;
   cursor: pointer;
 }
 
@@ -1245,16 +1265,14 @@ nav .button-collapse {
 }
 
 #yourStream {
-  position: fixed;
   background-size: cover;
-  top: 10px;
-  left: 10px;
   width: 100px;
   height: 64px;
   border-radius: 24px;
   background-color: #000000;
   background-position: center;
   cursor: pointer;
+  margin: 12px 0 12px 10px;
 }
 
 #yourStream.active {
@@ -1262,17 +1280,15 @@ nav .button-collapse {
 }
 
 .informationToggles {
-  position: fixed;
-  top: 72px;
-  left: 30px;
   width: 60px;
+  margin: 0 0 20px 30px;
 }
 
 .informationToggles li {
   width: 60px;
   height: 60px;
   border-radius: 30px;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   background-color: rgba(0,0,0,0.4);
   transition-duration: 0.5s;
 }
@@ -1288,10 +1304,8 @@ nav .button-collapse {
 }
 
 .toolbar {
-  position: fixed;
-  top: 288px;
-  left: 30px;
   width: 60px;
+  margin: 0 0 0 30px;
   border-radius: 30px;
   background-color: rgba(0,0,0,0.4);
 }
@@ -1338,7 +1352,7 @@ nav .button-collapse {
   background-image: url('../images/icons/audio.svg');
 }
 
-#raisehand {
+#raisehandToggle {
   background-image: url('../images/icons/raisehand.svg');
 }
 
@@ -1391,6 +1405,20 @@ nav .button-collapse {
 #exit:hover {
   opacity: 0.9;
   background-image: url('../images/icons/exitSession3.svg');
+}
+
+#newChatIndicator {
+  top: 0px;
+  left: 40px;
+  height: 20px;
+  width: 20px;
+  border-radius: 10px;
+  line-height: 20px;
+  background-color: rgb(63, 171, 221);
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+  float: right;
 }
 
 /* Tile toolbar */
@@ -1458,11 +1486,11 @@ nav .button-collapse {
 }
 
 #panel li {
-  height: 40px;
-  line-height: 40px;
-  padding: 0 40px 0 44px;
+  height: 48px;
+  line-height: 48px;
+  padding: 0 40px 0 20px;
   font-family: 'Open sans', sans-serif;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   transition-duration: 0.5s;
   background-size: 30px 30px;
   background-position: 10px 5px;
@@ -1475,13 +1503,16 @@ nav .button-collapse {
   cursor: hand;
 }
 
-.indicator-active {
-  background-image: url('../images/icons/audioOn.svg');
+#panel li.active {
+  /* background-image: url('../images/icons/audioOn.svg'); */
+}
 
+#panel li.inactive {
+  opacity: 0.4;
 }
 
 .indicator-absent {
-  opacity: 0.5;
+  
 }
 
 .panelSection {
@@ -1494,7 +1525,7 @@ nav .button-collapse {
   top: 2vh;
   left: 390px;
   width: 0px;
-  height: 55vh;
+  height: 65vh;
   background-color: rgba(0,0,0,0.8);
   backdrop-filter: blur(20px);
   z-index: 3;
@@ -1514,7 +1545,7 @@ nav .button-collapse {
 
 .chatFilter {
   list-style-type: none;
-  margin-left: 20px;
+  margin: 12px 0px 12px 20px;
 }
 
 .chatFilter li {
@@ -1541,6 +1572,30 @@ nav .button-collapse {
   background-color: #6622be;
 }
 
+#chatList {
+  background-color: rgba(0,0,0,0.4);
+}
+
+.chatLabel {
+  display: inline-block;
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin-left: 12px;
+  border-radius: 20px;
+  width: 80px;
+  text-align: center;
+}
+
+.question {
+  background-color: #1998d3;
+}
+
+.link {
+  width: 50px;
+  background-color: #6622be;
+}
+
 .chatContainer {
   background-color: rgba(0,0,0,0.4);
   height: 440px;
@@ -1552,7 +1607,8 @@ nav .button-collapse {
 
 .chatCaption {
   font-family: 'Open Sans', sans-serif;
-  font-size: 12px;
+  font-size: 1.4rem;
+  display: inline-block;
 }
 
 .chatBubble {
@@ -1561,7 +1617,7 @@ nav .button-collapse {
   line-height: 24px;
   background-color: rgba(0,0,0,0.4);
   font-family: 'Open Sans', sans-serif;
-  font-size: 16px;
+  font-size: 1.8rem;
 }
 
 .chatInputContainer {
@@ -1583,8 +1639,8 @@ nav .button-collapse {
   width: 50px;
   height: 50px;
   position: fixed;
-  top: 4px;
-  left: 4px;
+  top: 8px;
+  left: 8px;
   cursor: pointer;
 }
 
@@ -1610,26 +1666,21 @@ nav .button-collapse {
 }
 
 /* Raised Hand */
-#yourRaisedHand {
-  background-image: url(../images/icons/raisehandActive.svg);
-  width: 50px;
-  height: 50px;
+#reverseCamera {
   position: fixed;
-  border-radius: 25px;
-  top: 4px;
-  left: 4px;
+  background-image: url(../images/icons/reverseCamera.svg);
+  background-size: cover;
+  width: 52px;
+  height: 52px;
+  border-radius: 26px;
+  top: -28px;
+  left: 8px;
   cursor: pointer;
-  background-color: var(--main-color);
-  box-shadow: 0 5px 15px var(--main-color);
+  background-color: rgba(0,0,0,0.6);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
   z-index: -1;
   opacity: 0;
   display: block;
-  transition-duration: 0.5s;
-}
-
-#yourRaisedHand.active {
-  z-index: 4;
-  opacity: 1;
   transition-duration: 0.5s;
 }
 
@@ -1707,25 +1758,25 @@ nav .button-collapse {
 
 #notification {
   position: fixed;
-  top: 20px;
-  left: 50%;
-  height: 60px;
+  z-index: 4;
+  top: 0px;
+  left: calc(50vw - 250px);
   line-height: 60px;
-  width: 300px;
-  border-radius: 30px;
-  background-color: #ea5d3a;
-  opacity: 0.9;
-  font-family: 'Open Sans';
-  font-size: 1.2em;
+  border-bottom-left-radius: 24px;
+  border-bottom-right-radius: 24px;
+  background-color: #0073a490;
+  backdrop-filter: blur(30px);
+  padding: 0 20px;
+  width: 500px;
   text-align: center;
-  z-index: -1;
-  opacity: 0;
+  height: 0;
   transition-duration: 0.5s;
+  box-shadow: 0px 4px 16px rgba(0,0,0,0.4);
+  overflow: hidden;
 }
 
 #notification.active {
-  z-index: 2;
-  opacity: 1;
+  height: 60px;
   transition-duration: 0.5s;
 }
 
@@ -1741,6 +1792,12 @@ nav .button-collapse {
 
 @media only screen and (max-width: 980px), screen and (max-height: 600px) {
   
+  #reverseCamera {
+    z-index: 5;
+    opacity: 1;
+    transition-duration: 0.5s;
+  }
+
   .tile {
     width: 33.2%;
   }
@@ -1754,35 +1811,6 @@ nav .button-collapse {
     margin: 0px;
     padding: 0px;
     padding-bottom: 80px;
-  }
-
-  .informationToggles {
-    z-index: 3;
-    position: unset;
-    display: inline-block;
-    top: initial;
-    left: 120px;
-    bottom: 0px;
-    width: 190px;
-    height: 60px;
-  }
-
-  .informationToggles li {
-    display: inline-block;
-  }
-
-  .toolbar {
-    z-index: 3;
-    top: initial;
-    left: initial;
-    display: inline-block;
-    width: unset;
-    height: 60px;
-    margin: 10px 0px 0px 16px;
-  }
-
-  .toolbar li {
-    display: inline-block;
   }
 
   #sessionNav {
@@ -1799,13 +1827,40 @@ nav .button-collapse {
     backdrop-filter: blur(30px);
     border-top-left-radius: 24px;
     border-top-right-radius: 24px;
+    display: flex;
   }
 
   #yourStream {
     z-index: 3;
-    position: unset;
     display: inline-block;
-    margin: 0px 8px 8px 8px;
+    margin: 10px 8px 8px 8px;
+  }
+
+  .informationToggles {
+    z-index: 3;
+    height: 60px;
+    width: unset;
+    margin: 10px 12px 0 0;
+  }
+
+  .informationToggles li {
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+
+  .toolbar {
+    z-index: 3;
+    top: initial;
+    left: initial;
+    display: inline-block;
+    width: unset;
+    height: 60px;
+    margin: 10px 0 0 0;
+  }
+
+  .toolbar li {
+    display: inline-block;
+    margin-bottom: 10px;
   }
 
   #panel {
@@ -1885,10 +1940,7 @@ nav .button-collapse {
   }
 
   .informationToggles {
-    position: initial;
-    float: left;
-    margin: 12px 0 8px 0;
-    width: unset;
+    margin: 12px 4px 0px 0px;
   }
 
   .informationToggles li {
@@ -1898,7 +1950,8 @@ nav .button-collapse {
 
   .toolbar {
     height: 52px;
-    bottom: 14px;
+    float: right;
+    margin: 14px 0px 0px 0px;
   }
 
   .toolbar li {
