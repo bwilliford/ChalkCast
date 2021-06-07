@@ -111,6 +111,10 @@ window.onload = (event) => {
         chat.onclick = function() {
             toggleThread(studentName);
         }
+        let newMessage = document.createElement('div');
+        newMessage.className = 'newMessage';
+        newMessage.id = 'newMessage'+num;
+        chat.appendChild(newMessage);
         chatList.appendChild(chat);
     }
 
@@ -122,6 +126,13 @@ window.onload = (event) => {
     setTimeout( function() {
         document.getElementById('notification').classList.toggle('active');
     }, 3000);
+
+    //Someone random chatting
+    for (let i = 0; i < 3; i++) {
+        let random = Math.floor(Math.random()*9) + 2;
+        document.getElementById('newMessage'+random).classList.toggle('active');
+        document.getElementById('newMessage'+random).textContent = "1";
+    }
 };
 
 //Toggle video on/off
@@ -317,19 +328,19 @@ function toggleInformation(tool) {
 }
 
 function togglePanel(panel) {
+    document.getElementById('chatPanel').className = '';
+    document.getElementById('settingsPanel').className = '';
+    document.getElementById('chatThread').className = '';
     if (document.getElementById('panel').className === 'active') {
         document.getElementById('panel').className = '';
-        document.getElementById('panel-'+panel).style.display = 'none';
-        document.getElementById(panel).className = '';
-        //Chat specific
+        document.getElementById(panel+'Panel').style.display = 'none';
         if (panel === 'chat') {
-        document.getElementById('chatThread').className = '';
+            document.getElementById('chatThread').className = '';
         }
     }
     else {
         document.getElementById('panel').className = 'active';
-        document.getElementById('panel-'+panel).style.display = 'block';
-        document.getElementById(panel).className = 'active';
+        document.getElementById(panel+'Panel').style.display = 'block';
     }
 }
 

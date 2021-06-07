@@ -58,7 +58,7 @@
       </div>
       
       <div id="panel">
-          <div id="panel-chat" style="display: none">
+          <div id="chatPanel" style="display: none">
             <h4 class="title">Chat</h4>
             <div class="exit" onclick="togglePanel('chat')"></div>
             <ul id="chatList">
@@ -66,21 +66,25 @@
             </ul>
           </div>
 
-          <div id="panel-settings" style="display: none">
+          <div id="settingsPanel" style="display: none">
             <div class="exit" onclick="togglePanel('settings')"></div>
             <h4 class="title">Settings</h4>
             <div class="panelSection">
-              <h4>Room Link</h4>
+              <h5>Room Link</h5>
               <div class="button">Copy Link</div>
+              <h5>Lock Room</h5>
+              <div class="lockToggle">
+                <div id="unlockedRoom" class="active">Unlocked</div><div id="lockedRoom">Locked</div>
+              </div>
             </div>
             <div class="panelSection">
-              <h4>Participant Features</h4>
+              <h5>Participant Features</h5>
               <p>Screen Share</p>
               <p>Chat with Everyone</p>
               <p>Direct Message Chat</p>
             </div>
             <div class="panelSection">
-              <h4>Preferences</p>
+              <h5>Preferences</h5>
               <p>Upon entry, mic is OFF</p>
               <p>Upon entry, camera is OFF</p>
               <p>Microphone</p>
