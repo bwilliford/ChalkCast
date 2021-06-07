@@ -44,6 +44,19 @@
         <div id="exit"></div>
       </div>
 
+      <div id="nudgePanel">
+        <h4 class="title" id="nudgeTitle">Nudge</h4>
+        <div class="exit" onclick="toggleNudgePanel()"></div>
+        <div class="nudgeSection">
+          <input placeholder="Type message here"></input>
+          <span class="caption">36 characters max</span>
+        </div>
+        <div id="addNudgeImage"></div>
+        <div class="nudgeSection">
+          <div class="button" onclick="toggleNudgePanel()">Send</div>
+        </div>
+      </div>
+      
       <div id="panel">
           <div id="panel-chat" style="display: none">
             <h4 class="title">Chat</h4>
@@ -86,22 +99,22 @@
         </ul>
         <ul class="chatContainer">
           <li class="chat">
-            <div class="chatCaption"><strong>Student</strong> 12:45PM</div>
+            <div class="caption"><strong>Student</strong> 12:45PM</div>
             <div class="chatBubble">This is a chat that someone sent.</div>
           </li>
           <li class="chat">
-            <div class="chatCaption"><strong>Student</strong> 12:45PM</div>
+            <div class="caption"><strong>Student</strong> 12:45PM</div>
             <div class="chatLabel question">Question</div>
             <div class="chatBubble">This is a question?</div>
           </li>
           <li class="chat">
-            <div class="chatCaption"><strong>Student</strong> 12:55PM</div>
+            <div class="caption"><strong>Student</strong> 12:55PM</div>
             <div class="chatLabel link">Link</div>
             <div class="chatBubble">http://www.chalkcast.org</div>
           </li>
         </ul>
         <div class="chatInputContainer">
-          <input class="chatInput" placeholder="Type something here"></input>
+          <input placeholder="Type something here"></input>
         </div>
       </div>
 

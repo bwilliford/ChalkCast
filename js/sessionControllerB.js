@@ -30,6 +30,7 @@ window.onload = (event) => {
 
     for (i = 1; i < studentList.length + 1; i++) {
         let num = i.toString();
+        let student = studentList[i-1];
 
         let tile = document.createElement('li');
         tile.id = "tile"+num;
@@ -54,6 +55,9 @@ window.onload = (event) => {
         let nudgeTile = document.createElement('div');
         nudgeTile.className = "nudgeTile";
         nudgeTile.id = "nudgeTile"+num;
+        nudgeTile.onclick = function() {
+            toggleNudgePanel(student);
+        }
 
         let fullscreen = document.createElement('div');
         fullscreen.className = "fullscreen";
@@ -72,7 +76,7 @@ window.onload = (event) => {
         let name = document.createElement('div');
         name.className = "name";
         name.id = "name"+num;
-        name.textContent = studentList[i-1];
+        name.textContent = student;
         
         let videoToggle = document.createElement('div');
         videoToggle.className = "videoToggle"
@@ -141,6 +145,13 @@ function toggleVideo(tile, tileImage, name) {
         document.getElementById(name).className = "name";
     }
 }
+
+function toggleNudgePanel(student) {
+    document.getElementById('nudgePanel').classList.toggle('active');
+    if (student) {
+        document.getElementById('nudgeTitle').innerHTML = "Nudge <strong>"+student+"</strong>";
+    }
+};
 
 //Toggle audio on/off
 function toggleAudio(tile) {
