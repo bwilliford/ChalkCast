@@ -20,6 +20,26 @@ html {
   width: 0px;
 }
 
+.clear-0 {
+  clear: both;
+  height: 0px;
+}
+
+.clear-20 {
+  clear: both;
+  height: 20px;
+}
+
+.clear-40 {
+  clear: both;
+  height: 40px;
+}
+
+.clear-60 {
+  clear: both;
+  height: 60px;
+}
+
 ul {
   list-style-type: none;
   margin: 0;
@@ -101,6 +121,37 @@ input:focus-visible {
   padding: 0 20px;
   width: 80px;
   margin: 0px 0px 20px 20px;
+}
+
+.boot:hover {
+  box-shadow: 0 5px 25px #af232390;
+}
+
+.feature {
+  font-size: 1.8rem;
+  font-family: 'Open Sans', sans-serif;
+  line-height: 40px;
+  width: calc(100% - 40px);
+  float: left;
+}
+
+.switch {
+  height: 30px;
+  width: 40px;
+  margin-top: 4px;
+  float: right;
+}
+
+.switch:hover {
+  cursor: pointer;
+}
+
+.on {
+  background-image: url('../images/icons/switchOn.svg');
+}
+
+.off {
+  background-image: url('../images/icons/switchOff.svg');
 }
 
 body {
@@ -1630,7 +1681,7 @@ nav .button-collapse {
   top: 2vh;
   left: 390px;
   width: 0px;
-  height: 65vh;
+  height: 70vh;
   background-color: rgba(0,0,0,0.8);
   backdrop-filter: blur(20px);
   z-index: 3;
