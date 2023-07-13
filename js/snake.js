@@ -1,80 +1,228 @@
-var canvas = document.getElementById("snakeCanvas");
-var context = canvas.getContext("2d");
-var score = document.getElementById("score");
-var startBtn = document.getElementById("startBtn");
-var pauseBtn = document.getElementById("pauseBtn");
-var resumeBtn = document.getElementById("resumeBtn");
-var fruit = document.getElementById("fruit");
-var virus = document.getElementById("virus");
-var snakeHeadX, snakeHeadY, fruitX, fruitY, virusX, virusY, tail, totalTail, directionVar, direction, previousDir;
-var speed=1, xSpeed, ySpeed;
-const scale = 4;
-var rows = canvas.height / scale;
-var columns = canvas.width / scale;
-var min = scale / 10; //for min coordinate of fruit
-var max = rows - min; //for max 
-var gameInterval,  //interval after which screen will be updated
-    virusInterval, //interval after which virus position will be updated
-    intervalDuration=150, //starting screen updation interval
-    minDuration=75; //minimum screen updation interval
-var playing, gameStarted;
-var boundaryCollision;
-var tail0;
+let canvas = document.getElementById('snakeCanvas');
+let canvasHeight = 0;
+let canvasWidth = 0;
+let tileSize = 24;
+
+let snakeHead;
+let snakeBody = [];
+let startingApples;
+let apples = [];
+
+let previousDir = 'Right';
+let direction = 'Right';
+let directionVar = 'Right';
+
+let gameActive;
+let score;
+let gameSpeed;
+
+let appleSound = new Audio('./sounds/zap.wav');
+let gameoverSound = new Audio('./sounds/gameover.wav');
 
 
-startBtn.addEventListener("click", startGame);
+//Initialization of PaperJS and attaching to canvas
+paper.install(window);
 
-//reset the variables to starting value
-function reset() {
-    clearInterval(gameInterval);
-    clearInterval(virusInterval);
-    intervalDuration=150, 
-    minDuration=75;
-    tail = [];
-    totalTail = 0;
-    directionVar = "Right";
-    direction = "Right";
-    previousDir = "Right";
-    xSpeed = scale * speed;
-    ySpeed = 0;
-    snakeHeadX = 0;
-    snakeHeadY = 0;
-    pauseBtn.style.backgroundColor="#fff";
-    resumeBtn.style.backgroundColor="#fff";
-    playing=false, gameStarted=false;
-    boundaryCollision=false;
-}
+window.onload = (event) => {
+    document.getElementById('notification').classList.toggle('active');
+    setTimeout( function() {
+        document.getElementById('notification').classList.toggle('active');
+    }, 3000);
 
-function startGame() {
-    reset();
-    gameStarted=true;
-    playing=true;
-    fruitPosition();
-    virusPosition();
-    main();
-}
-
-function pauseGame() {
-    window.clearInterval(gameInterval);
-    window.clearInterval(virusInterval);
-    pauseBtn.style.backgroundColor="#ccc";
-    resumeBtn.style.backgroundColor="#fff";
-    playing=false;
-}
-
-function resumeGame()
-{
-    main();
-    pauseBtn.style.backgroundColor="#fff";
-    resumeBtn.style.backgroundColor="#ccc";
-    playing=true;
-}
+    paper.setup(canvas);
+    canvasHeight = paper.view.size.height;
+    canvasWidth = paper.view.size.width; 
+    startGame();
+};
 
 //EventListener to check which arrow key is pressed
 window.addEventListener("keydown", pressedKey);
 
+//Initializes snake
+function startGame() {
+
+    //Clear paper canvas
+    paper.project.clear();
+    //Reset score
+    score = 0;
+    if (document.getElementById('gameoverPanel').className === 'active') {
+        document.getElementById('gameoverPanel').classList.toggle('active');
+    }
+    document.getElementById('score').innerHTML = "Score <strong class='score'>0</strong>";
+
+    //Reset other variables
+    gameActive;
+    gameSpeed = '70';
+    startingApples = 10;
+    previousDir = 'Right';
+    direction = 'Right';
+    directionVar = 'Right';
+    snakeHead;
+    snakeBody = [];
+    apples = [];
+    clearInterval(gameActive);
+
+    //Generate snake head
+    let point = new Point(tileSize*10, tileSize*10);
+    snakeHead = new Path.Circle(point, tileSize/2);
+    snakeHead.fillColor = '#ffffff';
+
+    //Generate apples
+    generateRandomApples(startingApples);
+
+    //Set pace of game
+    gameActive = setInterval(function(){ 
+        moveSnake(); 
+    }, gameSpeed);
+}
+
+function generateRandomApples(num) {
+    for (let i = 0; i < num; i++) {
+        let randomX = tileSize * Math.floor(Math.random()*Math.floor(canvasWidth / tileSize)) + tileSize;
+        let randomY = tileSize * Math.floor(Math.random()*Math.floor(canvasHeight / tileSize)) + tileSize;
+        console.log(randomX, randomY);
+        let point = new Point(randomX, randomY);
+        let apple = new Path.Circle(point, tileSize/2);
+        apple.fillColor = '#35B1A6';
+        apple.shadowColor = '#35B1A6';
+        apple.shadowBlur = 16;
+        apples.push(apple);
+    }
+}
+
+function moveSnake() {
+    let prevPosition = snakeHead.position;
+
+    switch (direction) {
+        case "Up":
+            snakeHead.position.y -= tileSize;
+            break;
+        case "Down":
+            snakeHead.position.y += tileSize;
+            break;
+        case "Left":
+            snakeHead.position.x -= tileSize;
+            break;
+        case "Right":
+            snakeHead.position.x += tileSize;
+            break;   
+    }
+
+    //Move rest of snake body
+    if (snakeBody.length > 0) {
+        for (let i = 0; i < snakeBody.length; i++) {
+            let tempPosition = snakeBody[i].position;
+            snakeBody[i].position = prevPosition;
+            prevPosition = tempPosition;
+            snakeBody[i].fillColor = '#ffffff';
+        }
+    }
+
+    checkCollision();
+}
+
+function checkCollision() {
+
+    //Did it hit an apple?
+    for (let i = 0; i < apples.length; i++) {
+        if (snakeHead.position.x === apples[i].position.x && snakeHead.position.y === apples[i].position.y) {
+            apples[i].remove();
+            apples.splice(i,1);
+            generateRandomApples(1);
+
+            //Play audio
+            appleSound.play();
+
+            //Add to score
+            incrementScore();
+            
+            //Add to snake length;
+            let point;
+            if (snakeBody.length > 0) {
+                point = new Point(snakeBody[snakeBody.length-1].position.x - tileSize, snakeBody[snakeBody.length-1].position.y - tileSize);
+            }
+            else {
+                point = new Point(snakeHead.position.x - tileSize, snakeHead.position.y - tileSize);
+            }
+            let segmentSize = (tileSize / 2) - (snakeBody.length*0.5);
+            if (segmentSize < 4) {
+                segmentSize = 4;
+            }
+            let newSnakeBody = new Path.Circle(point, segmentSize);
+            snakeBody.push(newSnakeBody);
+        }
+    }
+
+    //Did it hit itself? 
+    for (let i = 0; i < snakeBody.length; i++) {
+        if (snakeHead.position.x === snakeBody[i].position.x && snakeHead.position.y === snakeBody[i].position.y) {
+            gameOver();
+        }
+    }
+
+    //Is it past the wall?
+    if (snakeHead.position.x < 0 || snakeHead.position.y < 0 || snakeHead.position.x > canvasWidth || snakeHead.position.y > canvasHeight) {
+        gameOver();
+    }
+}
+
+function incrementScore() {
+    score++;
+    document.getElementById('score').innerHTML = "Score <strong class='score'>"+score+"</strong>";
+    if (score >= 10 && score < 20) {
+        gameSpeed = 60;
+        clearInterval(gameActive);
+        gameActive = setInterval(function(){ 
+            moveSnake(); 
+        }, gameSpeed);
+    }
+    else if (score >= 20 && score < 30) {
+        gameSpeed = 50;
+        clearInterval(gameActive);
+        gameActive = setInterval(function(){ 
+            moveSnake(); 
+        }, gameSpeed);
+    }
+    else if (score >= 30 && score < 40) {
+        gameSpeed = 40;
+        clearInterval(gameActive);
+        gameActive = setInterval(function(){ 
+            moveSnake(); 
+        }, gameSpeed);
+    }
+    else if (score >= 40 && score < 50) {
+        gameSpeed = 30;
+        clearInterval(gameActive);
+        gameActive = setInterval(function(){ 
+            moveSnake(); 
+        }, gameSpeed);
+    }
+    else if (score >= 50 && score < 60) {
+        gameSpeed = 20;
+        clearInterval(gameActive);
+        gameActive = setInterval(function(){ 
+            moveSnake(); 
+        }, gameSpeed);
+    }
+}
+
+function gameOver() {
+    //Play audio
+    gameoverSound.play();
+
+    clearInterval(gameActive);
+            
+    snakeHead.fillColor = '#af2323';
+    for (let i = 0; i < snakeBody.length; i++) {
+        snakeBody[i].fillColor = '#af2323';
+    }
+
+    document.getElementById('gameoverPanel').classList.toggle('active');
+    document.getElementById('gameoverScore').innerHTML = "Score <strong class='score'>"+score+"</strong></h3>"
+}
+
 function pressedKey() {
-    if(event.keyCode===32 && gameStarted) {
+    if(event.keyCode === 32 && gameStarted) {
         if(playing) {
             pauseGame();
         }
@@ -96,8 +244,6 @@ function changeDirection() {
             //move "up" only when previous direction is not "down"
             if (previousDir !== "Down") {
                 direction=directionVar;
-                xSpeed = 0;
-                ySpeed = scale * -speed;
             } 
             break;
 
@@ -105,8 +251,6 @@ function changeDirection() {
             //move "down" only when previous direction is not "up"
             if (previousDir !== "Up") {
                 direction=directionVar;
-                xSpeed = 0;
-                ySpeed = scale * speed;
             } 
             break;
 
@@ -114,8 +258,6 @@ function changeDirection() {
             //move "left" only when previous direction is not "right"
             if (previousDir !== "Right") {
                 direction=directionVar;
-                xSpeed = scale * -speed;
-                ySpeed = 0;
             } 
             break;
 
@@ -123,249 +265,53 @@ function changeDirection() {
             //move "right" only when previous direction is not "left"
             if (previousDir !== "Left") {
                 direction=directionVar;
-                xSpeed = scale * speed;
-                ySpeed = 0;
             } 
             break;
     }
 }
 
-//random coordinates for fruit or virus
-function generateCoordinates() {
-    let xCoordinate = (Math.floor(Math.random() * (max - min) + min)) * scale;
-    let yCoordinate = (Math.floor(Math.random() * (max - min) + min)) * scale;
-    return {xCoordinate, yCoordinate};
+//Toggle audio on/off
+function toggleAudio(tile) {
+    if (document.getElementById(tile).className === 'audioToggle') {
+        document.getElementById(tile).className = 'audioToggle off';
+    }
+    else {
+        document.getElementById(tile).className = 'audioToggle';
+    }
 }
 
-//check snake's collision 
-function checkCollision() {
-    let tailCollision=false, virusCollision=false;
-    boundaryCollision=false;
-    //with its own tail
-    for (let i = 0; i < tail.length; i++) {
-        if (snakeHeadX == tail[i].tailX && snakeHeadY == tail[i].tailY) {
-            tailCollision=true;
+function togglePanel(panel) {
+    document.getElementById('chatPanel').className = '';
+    document.getElementById('settingsPanel').className = '';
+    document.getElementById('chatThread').className = '';
+    if (document.getElementById('panel').className === 'active') {
+        document.getElementById('panel').className = '';
+        document.getElementById(panel+'Panel').style.display = 'none';
+        if (panel === 'chat') {
+            document.getElementById('chatThread').className = '';
         }
     }
-    //with boundaries
-    if(snakeHeadX >= canvas.width || snakeHeadX < 0 || snakeHeadY >= canvas.height || snakeHeadY < 0)
-    {
-        boundaryCollision=true;
+    else {
+        document.getElementById('panel').className = 'active';
+        document.getElementById(panel+'Panel').style.display = 'block';
     }
-    //with virus
-    if(snakeHeadX===virusX && snakeHeadY===virusY) {
-        virusCollision=true;
-    }
-    return (tailCollision || boundaryCollision || virusCollision);
 }
 
-//-----------------------------------------------------SNAKE-----------------------------------------------------------//
-function drawSnakeHead(color) {
-        context.beginPath();
-        context.arc(snakeHeadX+scale/2, snakeHeadY+scale/2, scale/2, 0, 2 * Math.PI);
-        context.fillStyle = color;
-        context.fill();
-        //Eyes
-        context.beginPath();
-        if(direction==="Up") {
-            context.arc(snakeHeadX+(scale/5), snakeHeadY+(scale/5), scale/8, 0, 2 * Math.PI);
-            context.arc(snakeHeadX+scale-(scale/5), snakeHeadY+(scale/5), scale/8, 0, 2 * Math.PI);
-        }
-        else if(direction==="Down") {
-            context.arc(snakeHeadX+(scale/5), snakeHeadY+scale-(scale/5), scale/8, 0, 2 * Math.PI);
-            context.arc(snakeHeadX+scale-(scale/5), snakeHeadY+scale-(scale/5), scale/8, 0, 2 * Math.PI);
-        }
-        else if(direction==="Left") {
-            context.arc(snakeHeadX+(scale/5), snakeHeadY+(scale/5), scale/8, 0, 2 * Math.PI);
-            context.arc(snakeHeadX+(scale/5), snakeHeadY+scale-(scale/5), scale/8, 0, 2 * Math.PI);
-        }
-        else {
-            context.arc(snakeHeadX+scale-(scale/5), snakeHeadY+(scale/5), scale/8, 0, 2 * Math.PI);
-            context.arc(snakeHeadX+scale-(scale/5), snakeHeadY+scale-(scale/5), scale/8, 0, 2 * Math.PI);
-        }
-        context.fillStyle = "black";
-        context.fill();
-}
-
-function drawSnakeTail() {
-    let tailRadius = scale/4;
-        for (i = 0; i < tail.length; i++) {
-            tailRadius=tailRadius+((scale/2-scale/4)/tail.length);
-            context.beginPath();
-            context.fillStyle = "#ffffff";
-            context.arc((tail[i].tailX+scale/2), (tail[i].tailY+scale/2), tailRadius, 0, 2 * Math.PI);
-            context.fill();
-        }
-}
-
-//shift snake's previous positions to next position
-function moveSnakeForward() {
-    tail0=tail[0];
-    for (let i = 0; i < tail.length - 1; i++) {
-        tail[i] = tail[i + 1];
+function toggleInformation(tool) {
+    if (document.getElementById(tool).className === 'active') {
+        document.getElementById(tool).className = '';
     }
-    tail[totalTail - 1] = { tailX: snakeHeadX, tailY: snakeHeadY };
-    snakeHeadX += xSpeed;
-    snakeHeadY += ySpeed;
-}
-
-//only in case of boundary collision
-function moveSnakeBack()
-{
-    context.clearRect(0, 0, 500, 500);
-    for (let i = tail.length-1; i >= 1; i--) {
-        tail[i] = tail[i - 1];
+    else {
+        document.getElementById(tool).className = 'active';
     }
-    if(tail.length>=1) {
-        tail[0] = { tailX: tail0.tailX, tailY: tail0.tailY };
-    }
-    snakeHeadX -= xSpeed;
-    snakeHeadY -= ySpeed;
-    drawVirus();
-    drawFruit();
-    drawSnakeTail();
-}
 
-//display snake
-function drawSnake() {
-    drawSnakeHead("#ffffff");
-    drawSnakeTail();
-    if (checkCollision()) {
-        clearInterval(gameInterval);
-        clearInterval(virusInterval);
-        if(boundaryCollision) {
-            moveSnakeBack();
-        }
-        drawSnakeHead("red");
-        setTimeout(()=>{ 
-            scoreModal.textContent = totalTail;
-            $('#alertModal').modal('show');
-            //if modal is shown, remove the keydown event listener so that snake doesn't move 
-            $( "#alertModal" ).on('shown.bs.modal', function(){
-                window.removeEventListener("keydown", pressedKey);
-            });
-            //when modal hides, reset every variable and add keydown event listener again
-            $('#alertModal').on('hidden.bs.modal', function () {
-                context.clearRect(0, 0, 500, 500);
-                score.innerText = 0;
-                window.addEventListener("keydown", pressedKey);
-                reset();
-              })
-            modalBtn.addEventListener("click", ()=>{
-                context.clearRect(0, 0, 500, 500);
-                score.innerText = 0;
-            });
-        }, 1000);
+    //Turn off own video
+    if (document.getElementById('videoToggle').className === 'active') {
+        document.getElementById('yourStream').className = 'active';
+    }
+    else {
+        document.getElementById('yourStream').className = '';
     }
 }
 
 
-//------------------------------------------------------VIRUS-----------------------------------------------------------//
-function virusPosition() {
-    let virus=generateCoordinates();
-    virusX=virus.xCoordinate;
-    virusY=virus.yCoordinate;
-}
-
-function drawVirus() {
-    context.drawImage(virus, virusX, virusY, scale, scale);
-}
-
-//------------------------------------------------------FRUIT-----------------------------------------------------------//
-//generate random fruit position within canvas boundaries
-function fruitPosition() {
-    let fruit=generateCoordinates();
-    fruitX=fruit.xCoordinate;
-    fruitY=fruit.yCoordinate;
-}
-
-//draw image of fruit
-function drawFruit() {
-    context.drawImage(fruit, fruitX, fruitY, scale, scale);
-}
-
-//------------------------------------------------------MAIN GAME-----------------------------------------------------------//
-function checkSamePosition() {
-    if(fruitX==virusX && fruitY==virusY) {
-        virusPosition();
-    }
-    for(let i=0; i< tail.length; i++){
-        if(virusX===tail[i].tailX && virusY===tail[i].tailY)
-        {
-            virusPosition();
-            break;
-        }
-    }
-    for(let i=0; i< tail.length; i++){
-        if(fruitX===tail[i].tailX && fruitY===tail[i].tailY)
-        {
-            fruitPosition();
-            break;
-        }
-    }
-}
-
-function main() {
-    //update state at specified interval
-    virusInterval = window.setInterval(virusPosition, 10000);
-    gameInterval = window.setInterval(() => {
-        context.clearRect(0, 0, 500, 500);
-        checkSamePosition();
-        drawVirus();
-        drawFruit();
-        moveSnakeForward();
-        drawSnake();
-
-        //check if snake eats the fruit - increase size of its tail, update score and find new fruit position
-        if (snakeHeadX === fruitX && snakeHeadY === fruitY) {
-            totalTail++;
-            //increase the speed of game after every 20 points
-            if(totalTail%20==0 && intervalDuration>minDuration) {
-                clearInterval(gameInterval);
-                window.clearInterval(virusInterval);
-                intervalDuration=intervalDuration-10;
-                main();
-            }
-            fruitPosition();
-        }
-        score.innerText = totalTail;
-
-    }, intervalDuration);
-}
-
-//Snake Logic
-
-direction = 'right'
-delay = 500;
-gridSize = 16;
-
-updateSnake() {
-
-	 if direction === 'right' {
-		moveSnakeHead(positionX + gridSize)
-	 }
-	 if direction === 'left' {
-		moveSnakeHead(positionX - gridSize)
-	 }
-	 if direction === 'up' {
-		moveSnakeHead(positionY + gridSize)
-	 }
-	 if direction === 'down' {
-		moveSnakeHead(positionY - gridSize)
-	 }
-
-	 for (lengthOfSnake) {
-		moveEachSection to where next is
-	 }
-
-	 if (snakeHead.position === apple) { 
-		growSnake()
-		score++;
-	 }
-
-	 if (snakeHead.position === snakeSegment) {
-		gameOver();
-		break;	
-	 }
-	 
-	 

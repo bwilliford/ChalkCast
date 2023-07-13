@@ -26,6 +26,10 @@ let studentList = [
 
 //Generate tiles on page load
 window.onload = (event) => {
+    
+    //Notification
+    //toggleNotification();
+
     let tileList = document.getElementById('tileList');
 
     for (i = 1; i < studentList.length + 1; i++) {
@@ -120,12 +124,16 @@ window.onload = (event) => {
 
     //Someone random raising their hand
     let random = Math.floor(Math.random()*9) + 2;
-    document.getElementById('handTile'+random).classList.toggle('active');
+    //document.getElementById('handTile'+random).classList.toggle('active');
+    document.getElementById('audio8').className = 'activeSpeaker';
 
-    document.getElementById('notification').classList.toggle('active');
-    setTimeout( function() {
-        document.getElementById('notification').classList.toggle('active');
-    }, 3000);
+    //Border
+    // document.getElementById('tile8').style.border = '2px solid rgb(93, 193, 184)';
+    // document.getElementById('tile8').style.borderRadius = '30px';
+
+    //Glow
+    // document.getElementById('tile8').style.boxShadow = '0px 0px 35px rgba(93, 193, 184,0.8)';
+    // document.getElementById('tile8').style.borderRadius = '32px';
 
     //Someone random chatting
     for (let i = 0; i < 3; i++) {
@@ -133,6 +141,9 @@ window.onload = (event) => {
         document.getElementById('newMessage'+random).classList.toggle('active');
         document.getElementById('newMessage'+random).textContent = "1";
     }
+
+     //Chalkboard
+     //toggleChalkboard();
 };
 
 //Toggle video on/off
@@ -337,10 +348,16 @@ function togglePanel(panel) {
         if (panel === 'chat') {
             document.getElementById('chatThread').className = '';
         }
+
+        document.getElementById('tileList').style.left = "120px";
+        document.getElementById('tileList').style.width = "100%";
     }
     else {
         document.getElementById('panel').className = 'active';
         document.getElementById(panel+'Panel').style.display = 'block';
+
+        document.getElementById('tileList').style.left = "436px";
+        document.getElementById('tileList').style.width = "calc(100% - 300px)";
     }
 }
 
@@ -348,10 +365,34 @@ function toggleChalkboard() {
     if (document.getElementById('chalkboardContainer').className === 'active') {
         document.getElementById('chalkboardContainer').className = '';
         document.getElementById('chalk').className = '';
+        
+        //Activate expanded div
+        document.getElementById('expandedTile').className = "";
+        document.getElementById('tileList').className = "streamContainer";
+
+        //Make other tiles full width
+        let ul = document.getElementById("tileList");
+        let items = ul.getElementsByTagName("li");
+        for (let i = 0; i < items.length; i++) {
+            items[i].style.width = '';
+        }
+
     }
     else {
         document.getElementById('chalkboardContainer').className = 'active';
         document.getElementById('chalk').className = 'active';
+
+        //Activate expanded div
+        document.getElementById('expandedTile').className = "active";
+        document.getElementById('tileList').className = "expanded streamContainer";
+
+        //Make other tiles full width
+        let ul = document.getElementById("tileList");
+        let items = ul.getElementsByTagName("li");
+        for (let i = 0; i < items.length; i++) {
+            items[i].style.width = '100%';
+        }
+
     if (!chalkActivated) {
         setTimeout( function() {
         initializePaper();
@@ -431,4 +472,50 @@ function chatFilter(filter) {
     document.getElementById('questionsFilter').className = '';
     document.getElementById('linksFilter').className = '';
     document.getElementById(filter+'Filter').classList.toggle('active');
+}
+
+function toggleNotification(notification) {
+    if (notification) {
+        document.getElementById('notification').innerHTML = "<h4>"+notification+"</h4>";
+    }
+    document.getElementById('notification').classList.toggle('active');
+    setTimeout( function() {
+        document.getElementById('notification').classList.toggle('active');
+    }, 3000);
+}
+
+function toggleSwitch(id) {
+    document.getElementById('switch'+id).classList.toggle('on');
+}
+
+function toggleRoomLock(state) {
+    document.getElementById('unlockedRoom').className = '';  
+    document.getElementById('lockedRoom').className = '';
+    document.getElementById(state+'Room').className = 'active';
+    if (state === 'unlocked') {
+        document.getElementById('lockedCaption').innerHTML = "Anyone with the link can join";
+    }
+    else {
+        document.getElementById('lockedCaption').innerHTML = "Guests must be approved to join";
+    }
+}
+
+function toggleSmallPanel() {
+    document.getElementById('smallPanel').classList.toggle('active');  
+}
+
+function removeGuest() {
+    guest = document.getElementById('threadName').textContent;
+    toggleThread('exit');
+    console.log(guest);
+
+    chatList = document.getElementById('chatList');
+    for (let i = 0; i < chatList.children.length; i++) {
+        if (chatList.children[i].textContent === guest) {
+            chatList.children[i].remove();
+        }
+    }
+
+    toggleNotification(guest+' has been removed from the room. The room is now locked and guests must knock to join.')
+
 }

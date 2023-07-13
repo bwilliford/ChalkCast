@@ -1,0 +1,519 @@
+<html>
+  <head>
+    <title>ChalkCast</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="ChalkCast">
+    <meta name="keywords" content="ChalkCast">
+    <meta name="author" content="Blake Williford">
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link rel="stylesheet" href="css/style.css" >
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!--JS Frameworks-->
+    <script src="js/paper-full.min.js"></script>
+  </head>
+
+  <body>
+
+    <div class="navbar-fixed">
+      <nav class="transparent z-depth-0">
+        <div class="nav-wrapper">
+          <div class="row">
+            <div class="col s12">
+              <a href="#" data-activates="mobile-demo" class="button-collapse"></a>
+              <a href="./index.html" class="brand-logo"></a>
+                <ul id="nav" class="right hide-on-med-and-down">
+                  <li><a id="nav-cv" href="./team.html">About Us</a></li>
+                  <li><a id="nav-bio" href="./faqs.html">FAQs</a></li>
+                  <!--<li><a id="nav-contact" href="#">Community</a></li> -->
+                  <li><a id="nav-contact" class="loginButton" href="https://learn.chalkcast.org/">Login</a></li>
+                </ul>
+            </div>
+          </div>
+        <ul class="side-nav" id="mobile-demo">
+          <li><a href="./team.html">About Us</a></li>
+          <li><a href="./faqs.html">FAQs</a></li>
+          <!--<li><a href="#">Community</a></li> -->
+          <li><a id="nav-contact" class="loginButton" href="https://learn.chalkcast.org/">Login</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+<a href="#zap"><div class="down"></div></a>
+
+<div class="home-wrap">
+  <canvas id="home"></canvas>
+    <div class="main-section">
+      <div class="container">
+        <div class="row">
+          <div class="col s12 m2 l2"></div>
+          <div class="col s12 m8 l8">
+            <img src="images/teamIllustration.svg"/>
+            <h1 class="center-align">Who We Are</h1>
+            <h3 class="center-align">We're a team of engineers, designers, strategists, students, and teachers dedicated to making learning more accessible around the world.</h3>
+          </div>
+          <div class="col s12 m2 l2"></div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m6 l6">
+       <img src="./images/mission.png" style="width: 100%"/>
+      </div>
+      <div class="col s12 m6 l6">
+        <div class="clear-60"></div>
+        <div class="clear-60"></div>
+        <h1 class="true-teal">Our Mission</h1>
+        <p>We believe that all students, no matter their circumstances, should have resources to reach their highest potential. Our technology delivers a real-time and interactive experience between students and educators, no matter the device or geographic location.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m6 l6">
+        <h1 class="true-blue">Our Values</h1>
+        <div class="col s12 m6 l6">
+          <h3 class="true-blue">Inclusivity</h3>
+          <p>We strive to create an environment where all people feel welcomed, valued, and supported.</p>
+          <h3 class="true-red">Candor</h3>
+          <p>We like real, honest conversations that lead to smart ideas, fast actions and less meetings.</p>
+        </div>
+        <div class="col s12 m6 l6">
+          <h3 class="true-teal">Responsibility</h3>
+          <p>We commit and hold ourselves accountable to each other as teammates, and as members of the education community at large.</p>
+          <h3 class="true-purple">Creativity</h3>
+          <p>We give each other the time and space to experiment and take risks.</p>
+        </div>
+      </div>
+      <div class="col s12 m6 l6">
+        <img src="./images/values.png" style="width: 100%"/>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="zap">
+  <div class="container">
+    <h1 class="true-teal center-align">Meet Our Team</h1>
+    <div class="row">
+        <div class="col s12 m4 l3">
+            <div class="card">
+              <div class="teamPhotoContainer">
+                <div class="activator teamFilter tealFilter"></div>
+                <img  src="images/people/Kate.jpg"/>
+              </div>
+              <div class="card-content">
+                <h3 class="center-align">Kate Migliazzo</h3>
+                <h4 class="center-align true-teal">Director of Product</h4>
+              </div>
+              <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
+                <p>Bio text.</p>
+              </div>
+            </div>
+        </div>
+        <div class="col s12 m4 l3">
+          <div class="card">
+            <div class="teamPhotoContainer">
+              <div class="activator teamFilter tealFilter"></div>
+              <img  src="images/people/Brennan.jpg"/>
+            </div>
+              <div class="card-content">
+                <h3 class="center-align">Brennan Banta</h3>
+                <h4 class="center-align true-teal">UX Designer</h4>
+              </div>
+              <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
+                <p>Bio text.</p>
+              </div>
+          </div>
+      </div>
+        <div class="col s12 m4 l3">
+            <div class="card">
+              <div class="teamPhotoContainer">
+                <div class="activator teamFilter tealFilter"></div>
+                <img src="images/people/Blake.jpg"/>
+              </div>
+                <div class="card-content">
+                  <h3 class="center-align">Blake Williford</h3>
+                  <h4 class="center-align true-teal">UX Designer</h4>
+                </div>
+                <div class="card-reveal">
+                  <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
+                  <p>Bio text.</p>
+                </div>
+            </div>
+        </div>
+    
+          <div class="col s12 m4 l3">
+            <div class="card">
+              <div class="teamPhotoContainer">
+                <div class="activator teamFilter blueFilter"></div>
+                <img src="images/people/Phil.jpg"/>
+              </div>
+                <div class="card-content">
+                  <h3 class="center-align">Phil Mok</h3>
+                  <h4 class="center-align true-blue">Front-end Developer</h4>
+                </div>
+                <div class="card-reveal">
+                  <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
+                  <p>Bio text.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col s12 m4 l3">
+            <div class="card">
+              <div class="teamPhotoContainer">
+                <div class="activator teamFilter blueFilter"></div>
+                <img src="images/people/Scott.jpg"/>
+              </div>
+                <div class="card-content">
+                  <h3 class="center-align">Scott Morse</h3>
+                  <h4 class="center-align true-blue">Front-end Developer</h4>
+                </div>
+                <div class="card-reveal">
+                  <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
+                  <p>Bio text.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col s12 m4 l3">
+            <div class="card">
+              <div class="teamPhotoContainer">
+                <div class="activator teamFilter blueFilter"></div>
+                <img src="images/people/Austin.jpg"/>
+              </div>
+                <div class="card-content">
+                  <h3 class="center-align">Austin Theriot</h3>
+                  <h4 class="center-align true-blue">Front-end Developer</h4>
+                </div>
+                <div class="card-reveal">
+                  <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
+                  <p>Bio text.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col s12 m4 l3">
+          <div class="card">
+            <div class="teamPhotoContainer">
+              <div class="activator teamFilter blueFilter"></div>
+              <img src="images/emblem.png"/>
+            </div>
+              <div class="card-content">
+                <h3 class="center-align">Devin Rosen</h3>
+                <h4 class="center-align true-blue">Native Developer</h4>
+              </div>
+              <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
+                <p>Bio text.</p>
+              </div>
+          </div>
+        </div>
+        <div class="col s12 m4 l3">
+          <div class="card">
+            <div class="teamPhotoContainer">
+              <div class="activator teamFilter blueFilter"></div>
+              <img src="images/people/Antonio.jpg"/>
+            </div>
+              <div class="card-content">
+                <h3 class="center-align">Antonio Johnson</h3>
+                <h4 class="center-align true-blue">Native Developer</h4>
+              </div>
+              <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
+                <p>Bio text.</p>
+              </div>
+          </div>
+        </div>
+        <div class="col s12 m4 l3">
+          <div class="card">
+            <div class="teamPhotoContainer">
+              <div class="activator teamFilter redFilter"></div>
+              <img src="images/people/Alex.jpg"/>
+            </div>
+              <div class="card-content">
+                <h3 class="center-align">Alex Artushin</h3>
+                <h4 class="center-align true-red">Engineering Manager</h4>
+              </div>
+              <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
+                <p>Bio text.</p>
+              </div>
+          </div>
+        </div>
+        <div class="col s12 m4 l3">
+            <div class="card">
+              <div class="teamPhotoContainer">
+                <div class="activator teamFilter redFilter"></div>
+                <img src="images/people/Way.jpg"/>
+              </div>
+                <div class="card-content">
+                  <h3 class="center-align">Way Spurr-Chen</h3>
+                  <h4 class="center-align true-red">Software Architect</h4>
+                </div>
+                <div class="card-reveal">
+                  <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
+                  <p>Bio text.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col s12 m4 l3">
+            <div class="card">
+              <div class="teamPhotoContainer">
+                <div class="activator teamFilter redFilter"></div>
+                <img src="images/people/Mark.jpg"/>
+              </div>
+                <div class="card-content">
+                  <h3 class="center-align">Mark Miller</h3>
+                  <h4 class="center-align true-red">Back-end Developer</h4>
+                </div>
+                <div class="card-reveal">
+                  <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
+                  <p>Bio text.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col s12 m4 l3">
+            <div class="card">
+              <div class="teamPhotoContainer">
+                <div class="activator teamFilter redFilter"></div>
+                <img src="images/emblem.png"/>
+              </div>
+                <div class="card-content">
+                  <h3 class="center-align">Vineetha Bhat</h3>
+                  <h4 class="center-align true-red">Back-end Developer</h4>
+                </div>
+                <div class="card-reveal">
+                  <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
+                  <p>Bio text.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col s12 m4 l3">
+          <div class="card">
+            <div class="teamPhotoContainer">
+              <div class="activator teamFilter purpleFilter"></div>
+              <img src="images/people/Keah.jpg"/>
+            </div>
+              <div class="card-content">
+                <h3 class="center-align">Keah Gerhart</h3>
+                <h4 class="center-align true-purple">Office Manager</h4>
+              </div>
+              <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
+                <p>Bio text.</p>
+              </div>
+          </div>
+      </div>
+      <div class="col s12 m4 l3">
+        <div class="card">
+          <div class="teamPhotoContainer">
+            <div class="activator teamFilter purpleFilter"></div>
+            <img src="images/people/Monica.jpg"/>
+          </div>
+            <div class="card-content">
+              <h3 class="center-align">Monica</h3>
+              <h4 class="center-align true-purple">Student Intern</h4>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
+              <p>Bio text.</p>
+            </div>
+        </div>
+      </div>
+      <div class="col s12 m4 l3">
+        <div class="card">
+          <div class="teamPhotoContainer">
+            <div class="activator teamFilter purpleFilter"></div>
+            <img src="images/people/Violet.jpg"/>
+          </div>
+            <div class="card-content">
+              <h3 class="center-align">Violet</h3>
+              <h4 class="center-align true-purple">Student Intern</h4>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
+              <p>Bio text.</p>
+            </div>
+        </div>
+      </div>
+      <div class="col s12 m4 l3">
+        <div class="card">
+          <div class="teamPhotoContainer">
+            <div class="activator teamFilter purpleFilter"></div>
+            <img src="images/people/Jenny.jpg"/>
+          </div>
+            <div class="card-content">
+              <h3 class="center-align">Jenny</h3>
+              <h4 class="center-align true-purple">Student Intern</h4>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
+              <p>Bio text.</p>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="section" id="careers">
+  <div class="container">
+    <div class="row">
+      <h1 class="true-teal center-align">Join Us</h1>
+      <h2 class="center-align">Our current openings</h2>
+      <div class="col s12 m12 l12">
+        <ul class="collapsible">
+          <li>
+            <div class="collapsible-header first-header last-header">Back-End Engineer</span></div>
+            <div class="collapsible-body last-body">
+              <p>Located in Austin, Texas, we specialize in providing our video streaming platform to clients looking to provide high quality and performant streaming services to their vendors! Our education product is geared toward creating engaging learning/teaching environments for students and teachers alike. We are a fully funded startup and are looking for people who are looking for somewhere to stay for the long-term!</p>
+              <p>We are looking for a skilled Senior Back-End Engineer with a strong background in Golang, Node.js, RESTful APIs and microservices. You will be working on the back-end Chat application for our product as well as plug-in projects for our video platform team. We work collaboratively in a team here so someone with this mentality will really love it here!</p>
+              <p><strong>What You Will Be Doing</strong></p>
+              <ul>
+                <li>- Building feature sets for our education platform within our existing Go chat microservice</li>
+                <li>- Fixing and troubleshooting any bugs in our code</li>
+                <li>- Working collaboratively in a team environment</li>
+              </ul>
+              <p><strong>What You Need For This Position</strong></p>
+              <ul>
+                <li>- Golang </li>
+                <li>- NodeJS</li>
+                <li>- RESTful API design</li>
+                <li>- SQL</li>
+                <li>- Agile development</li>
+                <li>- Microservices</li>
+                <li>- Experience working in distributed systems</li>
+                <li>- Strong troubleshooting and debugging skills</li>
+                <li>- Willingness to learn and experiment with new technologies</li>
+              </ul>
+              <p><strong>Nice to haves</strong></p>
+              <ul>
+                <li>- Experience with Elastic stack</li>
+                <li>- Kubernetes</li>
+                <li>- Redis</li>
+                <li>- TypeScript</li>
+              </ul>
+              <p><strong>Perks and benefits</strong></p>
+              <ul>
+                <li>- Flexible working around core hours</li>
+                <li>- Competitive compensation</li>
+                <li>- Medical, dental, and vision</li>
+                <li>- 401k with company match</li>
+              </ul>
+              <p>So, if you are a Back-End Engineer with a strong background in Golang and Nodejs, please apply today!</p>
+
+              <p>Can be in:</p>
+              <p>Texas, Washington, Arizona, Colorado, California, Florida</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="container">
+    <h1 class="true-teal center-align">Benefits</h1>
+    <div class="row benefits">
+      <div class="col s6 m3 l3">
+       <img src="./images/benefits/heart.svg"/>
+       <h4 class="center-align">100% company paid Medical, Dental, Vision, and Voluntary Life Insurance for employees</h4>
+      </div>
+      <div class="col s6 m3 l3">
+        <img src="./images/benefits/401k.svg"/>
+       <h4 class="center-align">401K plan with 50% match</h4>
+      </div>
+      <div class="col s6 m3 l3">
+       <img src="./images/benefits/freedom.svg"/>
+       <h4 class="center-align">Freedom to experiment with new tools and technologies</h4>
+      </div>
+      <div class="col s6 m3 l3">
+        <img src="./images/benefits/pto.svg"/>
+        <h4 class="center-align">Paid time off</h4>
+      </div>
+    </div>
+    <div class="row benefits">
+      <div class="col s6 m3 l3">
+        <img src="./images/benefits/gym.svg"/>
+        <h4 class="center-align">Health & wellness stipend</h4>
+      </div>
+      <div class="col s6 m3 l3">
+        <img src="./images/benefits/flexibility.svg"/>
+       <h4 class="center-align">Flexibility and the freedom to do your best work from wherever you choose</h4>
+      </div>
+      <div class="col s6 m3 l3">
+        <img src="./images/benefits/office.svg"/>
+        <h4 class="center-align">And for when you want to come in - brand new collaboration space on Manor Rd and endless supply of coffee, sparkling water, & snacks</h4>
+      </div>
+      <div class="col s6 m3 l3">
+        <img src="./images/parentsAward.png"/>
+        <h4 class="center-align">Designated as a <strong>Best Place for Working Parents™</strong> in 2021</h4>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="container">
+    <div class="clear-60"></div>
+    <div class="row">
+      <div class="col s12 m3 l3>
+        <a href=""></a>
+        <a href="./index.html"><img class="logo" src="images/chalkcast-logo.png" style="width: 90%" /></a>
+        <p class="center-align">© 2021 ChalkCast</br> All Rights Reserved</p>
+        <div class="clear-60"></div>
+      </div>
+      <div class="col s12 m3 l3">
+        <h3 class="brand-header">Company</h3>
+        <a href="./team.html" class="center-align"><h4>About Us</h3></a>
+        <a href="./team.html#careers" class="center-align"><h4>Careers</h4></a>
+        <div class="clear-60"></div>
+      </div>
+      <div class="col s12 m3 l3">
+        <h3 class="brand-header">Support</h3>
+        <a href="./faqs.html" class="center-align"><h4>FAQs</h3></a>
+        <a href="./privacyPolicy.html" class="center-align"><h4>Privacy Policy</h4>
+        <a href="./termsOfService.html" class="center-align"><h4>Terms of Service</h4>
+        <div class="clear-60"></div>
+      </div>
+      <div class="col s12 m3 l3">
+        <h3 class="brand-header">Stay Connected</h3>
+        <a href="https://www.linkedin.com/company/chalkcast/" target="_blank"><img class="social" src="images/social/linkedin.svg"></img></a>
+        <div class="clear-60"></div>
+      </div>
+    </div> 
+    <div class="clear-60"></div>
+  </div>
+</div>
+
+    <!--Import jQuery before materialize.js-->
+     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+     <script>
+       $('.button-collapse').sideNav({
+           menuWidth: 300, // Default is 240
+           closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+           edge: 'right'
+         }
+       );
+     </script>
+
+    </script>
+  </body>
+</html>

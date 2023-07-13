@@ -1,0 +1,32 @@
+
+
+#tileList {
+    display: flex;
+    flex-wrap: wrap;
+    width: calc(100% - 120px);
+    position: absolute;
+    left: 120px;
+    overflow-y: scroll;
+    margin: 0px;
+    padding: 0px;
+}
+
+#tileList.expanded {
+    flex-direction: column;
+    left: unset;
+    right: 0px;
+    top: 0px;
+    width: 15%;
+}
+
+#expandedTile {
+    width: 0;
+    height: 0;
+    transition-duration: 0.5s;
+}
+
+#expandedTile.active {
+    width: 85%;
+    height: 100vh;
+    transition-duration: 0.5s;
+}

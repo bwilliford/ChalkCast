@@ -1,0 +1,72 @@
+<html>
+  <head>
+    <title>ChalkCast</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="ChalkCast">
+    <meta name="keywords" content="ChalkCast">
+    <meta name="author" content="Blake Williford">
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link rel="stylesheet" href="./css/style.css" >
+    <link rel="stylesheet" href="./css/dashboard.css" >
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+
+  <body class="lightbody">
+    <div class="header">
+        <div class="logo"></div>
+        <div class="profile" onclick="toggleProfileNav()">
+            <div class="profileImage"></div>
+            Billy
+        </div>
+
+        <div id="profileMenu">
+            <ul class="profileNav">
+                <li class="appSettings">App Settings</li>
+                <li class="appLogout">Logout</li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <div class="clear-20" ></div>
+        <h2 class="true-teal">Good morning <strong>Billy Zimbabwe!</strong></h2>
+        <div class="clear-40" ></div>
+        
+        <ul class="dashboardNav">
+            <li class="active">My Rooms</li><li>Invited Rooms</li>   
+        </ul>
+
+        <ul id="roomNav" class="roomNav">
+            
+            <li class="roomCard">
+                <a href="./dashboardRoom.html"><h4>Geometry 101</h4></a>
+                <div class="guestPreview" onmouseenter="toggleGuestModal()" onmouseleave="toggleGuestModal()"></div> 
+                <h5 class="roomDetails"><strong>24</strong></h5>  
+                <!-- <h5 class="lastSession">OCT 27</h5> -->
+            </li>
+            <li class="addCardContainer">
+                <div class="addCard" onclick="addNewRoom()"></div>
+            </li>
+        </ul>
+    </div>   
+    <div class="clear-20" ></div>
+
+    <div id="guestModal">
+        <ul id="guestModalList">
+            
+        </ul>
+    </div>
+
+     <!--Import jQuery before materialize.js-->
+     <!--JS Frameworks-->
+     <script src="./js/paper-full.min.js"></script>
+     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+     <script src="./js/dashboard.js"></script>        
+     
+    </body>
+</html>
