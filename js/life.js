@@ -130,8 +130,8 @@ function evolve() {
         }
     }
 
-    for (let i = 1; i < grid.length-1; i++) {
-        for (let j = 1; j < grid[i].length-1; j++) {
+    for (let i = 0; i < grid.length; i++) {
+        for (let j = 0; j < grid[i].length; j++) {
             grid[i][j] = newGrid[i][j];
         }
     }
