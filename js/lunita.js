@@ -58,7 +58,7 @@ function startGame() {
     for (let i = 0; i < (canvasWidth/tileSize); i++) {
             grid[i] = [];
             for (let j = 0; j < (canvasHeight/tileSize); j++) {
-                let random = Math.floor(Math.random()*3);
+                let random = Math.floor(Math.random()*2);
                 grid[i][j] = random;
             }
         }
